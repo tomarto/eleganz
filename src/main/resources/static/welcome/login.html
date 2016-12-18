@@ -1,0 +1,113 @@
+<div class="mainbox col-md-6 col-md-offset-3 col-sm-12">
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<div class="panel-title">Iniciar Sesi&oacute;n</div>
+			<div class="forgot-password"><a href="#">&iquest;Olvidaste tu contrase&ntilde;a?</a></div>
+		</div>
+		<div class="panel-body login-panel-body">
+			<div class="alert alert-danger col-sm-12" data-ng-show="lvm.hasLoginError">
+				<div class="alert alert-error">Usuario y/o contrase&ntilde;a invalidos.</div>
+			</div>
+			<div class="alert alert-success col-sm-12" data-ng-show="lvm.hasLoggedOut">
+				<div class="alert alert-success">Has cerrado tu sesi&oacute;n.</div>
+			</div>
+			<form id="loginForm" name="loginForm" class="login-form" role="form"
+					action="/" method="post" novalidate="novalidate">
+				<div class="form-group login-form-group"
+						data-ng-class="{'has-warning': lvm.fieldHasWarning(loginForm.username),
+										'has-error': lvm.fieldHasError(loginForm.username)}">
+					<label class="sr-only" for="username">Usuario</label>
+					<div class="input-group">
+						<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+						<input id="username" type="text" class="form-control" name="username"
+								placeholder="Username" required="required"
+								data-ng-minlength="lvm.username.minlength"
+								maxlength="{{lvm.username.maxlength}}"
+								data-ng-maxlength="lvm.username.maxlength"
+								data-ng-pattern="lvm.alphanumericRegex"
+								data-ng-model="username" />
+						<span class="input-group-addon" data-ng-messages="loginForm.username.$error"
+								data-ng-show="lvm.showFieldMessages(loginForm.username)">
+							<i class="glyphicon glyphicon-remove" data-ng-message="required"
+									data-ng-show="loginForm.username.$dirty"></i>
+							<i class="glyphicon glyphicon-remove" data-ng-message="pattern"></i>
+							<i class="glyphicon glyphicon-warning-sign" data-ng-message="minlength"></i>
+						</span>
+					</div>
+					<p role="alert" class="help-block" data-ng-messages="loginForm.username.$error"
+							data-ng-show="lvm.showFieldMessages(loginForm.username)">
+						<span class="help-block" data-ng-message="required" 
+								data-ng-show="loginForm.username.$dirty">
+							Usuario es requerido
+						</span>
+						<span class="help-block" data-ng-message="pattern">
+							Usuario s&oacute;lo acepta caracteres alfanuméricos
+						</span>
+						<span class="help-block" data-ng-message="minlength">
+							Usuario debe tener un m&iacute;nimo de 5 caracteres
+						</span>
+						<span class="help-block" data-ng-message="maxlength">
+							Usuario debe tener un máximo de 50 caracteres
+						</span>
+					</p>
+				</div>
+				<div class="form-group login-form-group"
+						data-ng-class="{'has-warning': lvm.fieldHasWarning(loginForm.password),
+										'has-error': lvm.fieldHasError(loginForm.password)}">
+					<label class="sr-only" for="username">Contrase&ntilde;a</label>
+					<div class="input-group">
+						<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+						<input id="password" type="password" class="form-control" name="password"
+								placeholder="Password" required="required"
+								data-ng-minlength="lvm.password.minlength"
+								maxlength="{{lvm.password.maxlength}}"
+								data-ng-maxlength="lvm.password.maxlength"
+								data-ng-pattern="lvm.alphanumericRegex"
+								data-ng-model="password" />
+						<span class="input-group-addon" data-ng-messages="loginForm.password.$error"
+								data-ng-show="lvm.showFieldMessages(loginForm.password)">
+							<i class="glyphicon glyphicon-remove" data-ng-message="required"
+									data-ng-show="loginForm.password.$dirty"></i>
+							<i class="glyphicon glyphicon-remove" data-ng-message="pattern"></i>
+							<i class="glyphicon glyphicon-warning-sign" data-ng-message="minlength"></i>
+						</span>
+					</div>
+					<p role="alert" class="help-block" data-ng-messages="loginForm.password.$error"
+							data-ng-show="lvm.showFieldMessages(loginForm.password)">
+						<span class="help-block" data-ng-message="required" 
+								data-ng-show="loginForm.password.$dirty">
+							Contrase&ntilde;a es requerida
+						</span>
+						<span class="help-block" data-ng-message="pattern">
+							Contrase&ntilde;a s&oacute;lo acepta caracteres alfanuméricos
+						</span>
+						<span class="help-block" data-ng-message="minlength">
+							Contrase&ntilde;a debe tener un m&iacute;nimo de 5 caracteres
+						</span>
+						<span class="help-block" data-ng-message="maxlength">
+							Contrase&ntilde;a debe tener un máximo de 50 caracteres
+						</span>
+					</p>
+				</div>
+				<div class="checkbox">
+					<label>
+						<input id="remember" type="checkbox" name="remember" value="true"
+								data-ng-model="remember" /> Recordar sesi&oacute;n
+					</label>
+				</div>
+				<button id="btn-login" type="submit" class="btn btn-primary"
+						data-ng-disabled="loginForm.$invalid">
+					Iniciar sesi&oacute;n
+				</button>
+				<div class="form-group">
+					<div class="horizontal-line">
+						&iquest;No tienes una cuenta?
+						<a href="#">
+							Registrate aqu&iacute;
+						</a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

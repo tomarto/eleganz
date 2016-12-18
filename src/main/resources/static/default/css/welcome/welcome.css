@@ -1,0 +1,123 @@
+@CHARSET "ISO-8859-1";
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak,
+	.x-ng-cloak {
+	display: none !important;
+}
+
+html, body {
+	height: 100%;
+}
+
+.background-video {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	min-width: 100%;
+	min-height: 100%;
+	width: auto;
+	height: auto;
+	z-index: -100;
+	transform: translateX(-50%) translateY(-50%);
+	background-size: cover;
+	transition: 1s opacity;
+}
+
+.wrap {
+	min-height: 100%;
+}
+
+.wrap > .container {
+	overflow: auto;
+	padding-top: 20px;
+	padding-bottom: 35px;
+}
+
+.header {
+	padding: 15px 0;
+}
+
+.navbar {
+	margin-bottom: 0px;
+}
+
+.navbar-toggle {
+	border: 1px solid #fff;
+}
+
+.navbar-toggle .icon-bar {
+	background-color: #fff;
+}
+
+.navbar a,
+.navbar li.active > a,
+.navbar ul li a:hover,
+.navbar ul li a:focus,
+.navbar ul li a:active {
+	color: #fff;
+	background-color: transparent;
+	background-image: none;
+}
+
+.navbar ul li a {
+	font-size: 14px;
+	color: rgba(255, 255, 255, 0.5);
+	transition: 0.5s;
+	-webkit-transition: 0.5s;
+}
+
+.navbar-menu {
+	margin-bottom: 10px;
+}
+
+.welcome-logo {
+	color: #fff !important;
+	font-size: 40px;
+	margin: 0;
+	font-family: "Sacramento", Arial, serif;
+}
+
+.mainbox {
+	margin-top: 50px;
+}
+
+.forgot-password {
+	float: right;
+	font-size: 80%;
+	position: relative;
+	top: -10px;
+}
+
+.login-panel-body {
+	padding-top: 30px;
+}
+
+.login-form .login-form-group {
+	margin-bottom: 25px;
+}
+
+.horizontal-line {
+	border-top: 1px solid #888;
+	padding-top: 15px;
+	margin-top: 15px;
+	font-size: 85%;
+}
+
+.footer {
+	position: relative;
+	margin-top: -35px;
+	height: 35px;
+	clear: both;
+	border-top: 1px solid #e5e5e5;
+}
+
+.footer p {
+	color: #fff;
+}
+
+@media screen and (min-width: 768px) {
+	.footer {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}

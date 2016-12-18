@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<title>Eleganz</title>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sacramento" />
+		<link rel="stylesheet" type="text/css" th:href="@{/default/css/vendor/bootstrap/bootstrap.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/default/css/welcome/welcome.css}" />
+	</head>
+	<body data-ng-app="welcome">
+		<video class="background-video" autoplay="autoplay" loop="loop" data-muted="muted">
+			<source src="/welcome/videos/background.mp4" type="video/mp4" />
+			<source src="/welcome/videos/background.webm" type="video/webm" />
+		</video>
+
+		<div class="wrap">
+			<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+				<div class="container">
+					<div class="navbar-header">
+						<button class="navbar-toggle collapsed" type="button" data-toggle="collapse"
+								data-target=".navbar-menu" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand welcome-logo" href="#">Eleganz</a>
+					</div>
+					<div class="navbar-collapse collapse navbar-menu">
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="#">INICIO</a></li>
+							<li><a href="#">CONÓCENOS</a></li>
+							<li><a href="#">NUESTROS SERVICIOS</a></li>
+							<li><a href="#">PROMOCIONES</a></li>
+							<li><a href="#">CONTACTO</a></li>
+							<li class="active"><a href="#">INICIAR SESIÓN</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+
+			<div data-ui-view="" class="container"></div>
+		</div>
+
+		<div class="footer">
+			<div class="container">
+				<p>&copy; Eleganz. Current env: <span th:text="${env}">Environment</span></p>
+			</div>
+		</div>
+
+		<script type="text/javascript" th:src="@{/default/js/vendor/jquery/jquery-3.1.1.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/vendor/angular/angular.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/vendor/angular/angular-ui-router.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/vendor/angular/angular-messages.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/vendor/angular/angular-animate.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/vendor/angular/angular-touch.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/vendor/bootstrap/bootstrap.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/vendor/bootstrap/ui-bootstrap-tpls-2.3.1.js}"></script>
+
+		<script type="text/javascript" th:src="@{/default/js/welcome/welcome.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/welcome/welcome.routes.js}"></script>
+
+		<script type="text/javascript" th:src="@{/default/js/welcome/login/login.module.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/welcome/login/login.controller.js}"></script>
+	</body>
+</html>
