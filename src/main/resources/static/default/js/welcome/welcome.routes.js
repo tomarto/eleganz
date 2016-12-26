@@ -29,6 +29,6 @@
 				controllerAs: 'lvm'
 			});
 
-		$urlRouterProvider.otherwise('login');
+		$urlRouterProvider.otherwise('inicio');
 	}
 })();

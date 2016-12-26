@@ -14,7 +14,8 @@
 		<link rel="stylesheet" type="text/css" th:href="@{/default/css/welcome/welcome.css}" />
 	</head>
 	<body data-ng-app="welcome">
-		<video class="background-video" autoplay="autoplay" loop="loop" data-muted="muted">
+		<video class="background-video" autoplay="autoplay" loop="loop" data-muted="muted"
+				poster="/welcome/images/background.png">
 			<source th:src="@{/welcome/videos/background.mp4}" type="video/mp4" />
 			<source th:src="@{/welcome/videos/background.webm}" type="video/webm" />
 		</video>
