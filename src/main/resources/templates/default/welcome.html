@@ -6,19 +6,21 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<meta name="theme-color" content="#B39F3C" />
 		<title>Eleganz</title>
+		<link rel="shortcut icon" type="image/x-icon" th:href="@{/welcome/favicon.ico}" />
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sacramento" />
 		<link rel="stylesheet" type="text/css" th:href="@{/default/css/vendor/bootstrap/bootstrap.css}" />
 		<link rel="stylesheet" type="text/css" th:href="@{/default/css/welcome/welcome.css}" />
 	</head>
 	<body data-ng-app="welcome">
 		<video class="background-video" autoplay="autoplay" loop="loop" data-muted="muted">
-			<source src="/welcome/videos/background.mp4" type="video/mp4" />
-			<source src="/welcome/videos/background.webm" type="video/webm" />
+			<source th:src="@{/welcome/videos/background.mp4}" type="video/mp4" />
+			<source th:src="@{/welcome/videos/background.webm}" type="video/webm" />
 		</video>
 
 		<div class="wrap">
-			<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+			<nav class="navbar navbar-fixed-top custom-navbar-inverse" role="navigation">
 				<div class="container">
 					<div class="navbar-header">
 						<button class="navbar-toggle collapsed" type="button" data-toggle="collapse"
@@ -32,12 +34,30 @@
 					</div>
 					<div class="navbar-collapse collapse navbar-menu">
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="#">INICIO</a></li>
-							<li><a href="#">CONÓCENOS</a></li>
-							<li><a href="#">NUESTROS SERVICIOS</a></li>
-							<li><a href="#">PROMOCIONES</a></li>
-							<li><a href="#">CONTACTO</a></li>
-							<li class="active"><a href="#">INICIAR SESIÓN</a></li>
+							<li data-ui-sref-active="active">
+								<a data-ui-sref="home" class="visible-xs" data-toggle="collapse" data-target=".navbar-menu">INICIO</a>
+								<a data-ui-sref="home" class="hidden-xs">INICIO</a>
+							</li>
+							<li data-ui-sref-active="active">
+								<a data-ui-sref="aboutUs" href="#" class="visible-xs" data-toggle="collapse" data-target=".navbar-menu">CONÓCENOS</a>
+								<a data-ui-sref="aboutUs" href="#" class="hidden-xs">CONÓCENOS</a>
+							</li>
+							<li>
+								<a href="#" class="visible-xs" data-toggle="collapse" data-target=".navbar-menu">NUESTROS SERVICIOS</a>
+								<a href="#" class="hidden-xs">NUESTROS SERVICIOS</a>
+							</li>
+							<li>
+								<a href="#" class="visible-xs" data-toggle="collapse" data-target=".navbar-menu">PROMOCIONES</a>
+								<a href="#" class="hidden-xs">PROMOCIONES</a>
+							</li>
+							<li>
+								<a href="#" class="visible-xs" data-toggle="collapse" data-target=".navbar-menu">CONTACTO</a>
+								<a href="#" class="hidden-xs">CONTACTO</a>
+							</li>
+							<li data-ui-sref-active="active">
+								<a data-ui-sref="login" class="visible-xs" data-toggle="collapse" data-target=".navbar-menu">INICIAR SESIÓN</a>
+								<a data-ui-sref="login" class="hidden-xs">INICIAR SESIÓN</a>
+							</li>
 						</ul>
 					</div>
 				</div>

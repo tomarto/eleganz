@@ -14,6 +14,14 @@
 
 	function WelcomeRoutes($stateProvider, $urlRouterProvider) {
 		$stateProvider
+			.state('home', {
+				url : '/inicio',
+				templateUrl : '/welcome/home.html'
+			})
+			.state('aboutUs', {
+				url : '/conocenos',
+				templateUrl : '/welcome/about-us.html'
+			})
 			.state('login', {
 				url : '/login?error?logout',
 				templateUrl : '/welcome/login.html',
