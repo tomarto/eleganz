@@ -38,7 +38,6 @@ body {
 
 .wrap > .container {
 	overflow: auto;
-	padding-top: 20px;
 	padding-bottom: 50px;
 }
 
@@ -133,7 +132,13 @@ body {
 	border-top: 1px solid #e5e5e5;
 }
 
-@media screen and (max-width: 768px) {
+/* Desktop-specific */
+@media screen and (min-width: 768px) {
+	
+}
+
+/* Mobile-specific */
+@media screen and (max-width: 767px) {
 	.custom-navbar-inverse {
 		background-color: #222;
 		border-color: #080808;
@@ -256,6 +261,10 @@ body {
 	.custom-navbar-inverse .btn-link[disabled]:focus,
 	fieldset[disabled] .custom-navbar-inverse .btn-link:focus {
 		color: #444;
+	}
+
+	.wrap > .container {
+		padding-top: 20px;
 	}
 
 	.footer {

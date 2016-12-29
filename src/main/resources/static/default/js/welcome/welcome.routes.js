@@ -14,23 +14,49 @@
 
 	function WelcomeRoutes($stateProvider, $urlRouterProvider) {
 		$stateProvider
-			.state('home', {
+			.state('app', {
+				abstract: true,
+				views: {
+					'header': {
+						templateUrl : '/welcome/partials/header.html',
+						controller: 'HeaderController',
+						controllerAs: 'hvm'
+					}
+				}
+			})
+			.state('app.home', {
 				url : '/inicio',
-				templateUrl : '/welcome/partials/home.html'
+				views: {
+					'content@': {
+						templateUrl : '/welcome/partials/home.html'
+					}
+				}
 			})
-			.state('aboutUs', {
+			.state('app.aboutUs', {
 				url : '/conocenos',
-				templateUrl : '/welcome/partials/about-us.html'
+				views: {
+					'content@': {
+						templateUrl : '/welcome/partials/about-us.html'
+					}
+				}
 			})
-			.state('services', {
+			.state('app.services', {
 				url : '/servicios',
-				templateUrl : '/welcome/partials/services.html'
+				views: {
+					'content@': {
+						templateUrl : '/welcome/partials/services.html'
+					}
+				}
 			})
-			.state('login', {
+			.state('app.login', {
 				url : '/login?error?logout',
-				templateUrl : '/welcome/partials/login.html',
-				controller: 'LoginController',
-				controllerAs: 'lvm'
+				views: {
+					'content@': {
+						templateUrl : '/welcome/partials/login.html',
+						controller: 'LoginController',
+						controllerAs: 'lvm'
+					}
+				}
 			});
 
 		$urlRouterProvider.otherwise('inicio');

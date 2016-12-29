@@ -13,6 +13,7 @@
 			'ngAnimate',
 			'ngTouch',
 			'ui.bootstrap',
+			'header',
 			'login'
 		]);
 })();

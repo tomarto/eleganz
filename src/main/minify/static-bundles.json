@@ -36,7 +36,10 @@
 				"welcome/welcome.routes.js",
 
 				"welcome/login/login.module.js",
-				"welcome/login/login.controller.js"
+				"welcome/login/login.controller.js",
+
+				"welcome/header/header.module.js",
+				"welcome/header/header.controller.js"
 			]
 		}
 	]
