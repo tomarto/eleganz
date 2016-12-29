@@ -16,15 +16,19 @@
 		$stateProvider
 			.state('home', {
 				url : '/inicio',
-				templateUrl : '/welcome/home.html'
+				templateUrl : '/welcome/partials/home.html'
 			})
 			.state('aboutUs', {
 				url : '/conocenos',
-				templateUrl : '/welcome/about-us.html'
+				templateUrl : '/welcome/partials/about-us.html'
+			})
+			.state('services', {
+				url : '/servicios',
+				templateUrl : '/welcome/partials/services.html'
 			})
 			.state('login', {
 				url : '/login?error?logout',
-				templateUrl : '/welcome/login.html',
+				templateUrl : '/welcome/partials/login.html',
 				controller: 'LoginController',
 				controllerAs: 'lvm'
 			});
