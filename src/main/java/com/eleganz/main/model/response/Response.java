@@ -1,6 +1,7 @@
 package com.eleganz.main.model.response;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
@@ -37,12 +38,10 @@ public class Response<T> implements Serializable {
 	 * 
 	 * @param errorMessage
 	 *            a {@link java.lang.String} object.
-	 * @param errorTime
-	 *            a {@link java.lang.Long} object.
 	 */
-	public Response(String errorMessage, Long errorTime) {
+	public Response(String errorMessage) {
 		this.errorMessage = errorMessage;
-		this.errorTime = errorTime;
+		this.errorTime = new Date().getTime();
 	}
 
 	/**
