@@ -45,6 +45,9 @@
 				"welcome/login/login.module.js",
 				"welcome/login/login.controller.js",
 
+				"welcome/services/services.module.js",
+				"welcome/services/services.controller.js",
+
 				"welcome/header/header.module.js",
 				"welcome/header/header.controller.js"
 			]

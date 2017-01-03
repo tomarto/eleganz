@@ -44,7 +44,9 @@
 				url : '/servicios',
 				views: {
 					'content@': {
-						templateUrl : '/welcome/partials/services.html'
+						templateUrl : '/welcome/partials/services.html',
+						controller: 'ServicesController',
+						controllerAs: 'svm'
 					}
 				}
 			})

@@ -14,6 +14,7 @@
 			'ngTouch',
 			'ui.bootstrap',
 			'header',
+			'services',
 			'login'
 		]);
 })();
