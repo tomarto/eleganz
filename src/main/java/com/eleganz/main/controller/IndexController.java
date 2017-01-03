@@ -2,10 +2,16 @@ package com.eleganz.main.controller;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
+import java.util.Set;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.eleganz.main.facade.authentication.AuthenticationFacade;
 
 /**
  * <p>
@@ -23,6 +29,24 @@ public class IndexController {
 	@Value("${app.welcomePage}")
 	private String welcomePage;
 
+	@Value("${app.adminPage}")
+	private String adminPage;
+
+    private AuthenticationFacade authenticationFacade;
+
+	/**
+	 * <p>
+	 * Constructor for IndexController.
+	 * </p>
+	 * 
+	 * @param authenticationFacade
+	 *            a {@link com.eleganz.main.facade.authentication.AuthenticationFacade} object.
+	 */
+	@Autowired
+    public IndexController(AuthenticationFacade authenticationFacade) {
+        this.authenticationFacade = authenticationFacade;
+    }
+
 	/**
 	 * <p>
 	 * Retrieves the welcome page.
@@ -34,6 +58,29 @@ public class IndexController {
 	public ModelAndView welcome() {
 		final ModelAndView mav = new ModelAndView(welcomePage);
         mav.addObject("env", env);
+        return mav;
+	}
+
+	/**
+	 * <p>
+	 * Retrieves the admin page.
+	 * </p>
+	 * 
+	 * @return a {@link java.lang.String} object.
+	 */
+	@RequestMapping(value = "/panel", method = GET)
+	public ModelAndView panel() {
+		final ModelAndView mav;
+		Set<String> roles = AuthorityUtils.authorityListToSet(
+				authenticationFacade.getAuthentication().getAuthorities());
+        if(roles.contains("ROLE_ADMIN")) {
+        	mav = new ModelAndView(adminPage);
+        } else {
+        	// TODO: Change to User page
+        	mav = new ModelAndView(adminPage);
+        }
+        mav.addObject("env", env);
+
         return mav;
 	}
 }

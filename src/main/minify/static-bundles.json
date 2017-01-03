@@ -15,6 +15,13 @@
 			]
 		},
 		{
+			"type": "css",
+			"name": "admin.css",
+			"files": [
+				"admin/admin.css"
+			]
+		},
+		{
 			"type": "js",
 			"name": "vendor.js",
 			"files": [
@@ -40,6 +47,20 @@
 
 				"welcome/header/header.module.js",
 				"welcome/header/header.controller.js"
+			]
+		},
+		{
+			"type": "js",
+			"name": "admin.js",
+			"files": [
+				"admin/admin.js",
+				"admin/admin.routes.js",
+
+				"admin/header/header.module.js",
+				"admin/header/header.controller.js",
+
+				"admin/user/user.module.js",
+				"admin/user/users.controller.js"
 			]
 		}
 	]

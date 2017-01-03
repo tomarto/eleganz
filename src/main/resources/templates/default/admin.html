@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<meta name="theme-color" content="#B39F3C" />
+		<title>Eleganz Admin</title>
+		<link rel="shortcut icon" type="image/x-icon" th:href="@{/favicon.ico}" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sacramento" />
+		<link rel="stylesheet" type="text/css" th:href="@{/default/css/vendor/bootstrap/bootstrap.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/default/css/admin/admin.css}" />
+	</head>
+	<body data-ng-app="admin">
+		<video class="background-video" autoplay="autoplay" loop="loop" data-muted="muted"
+				poster="/admin/images/background.png">
+			<source th:src="@{/admin/videos/background.mp4}" type="video/mp4" />
+			<source th:src="@{/admin/videos/background.webm}" type="video/webm" />
+		</video>
+
+		<div class="wrap">
+			<div data-ui-view="header"></div>
+			<div data-ui-view="content" class="container"></div>
+		</div>
+
+		<div class="footer">
+			<div class="container">
+				<p>&copy; Eleganz. Current env: <span th:text="${env}">Environment</span></p>
+			</div>
+		</div>
+
+		<script type="text/javascript" th:src="@{/default/js/vendor/jquery/jquery-3.1.1.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/vendor/angular/angular.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/vendor/angular/angular-ui-router.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/vendor/angular/angular-messages.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/vendor/angular/angular-animate.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/vendor/angular/angular-touch.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/vendor/bootstrap/bootstrap.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/vendor/bootstrap/ui-bootstrap-tpls-2.3.1.js}"></script>
+
+		<script type="text/javascript" th:src="@{/default/js/admin/admin.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/admin/admin.routes.js}"></script>
+
+		<script type="text/javascript" th:src="@{/default/js/admin/header/header.module.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/admin/header/header.controller.js}"></script>
+
+		<script type="text/javascript" th:src="@{/default/js/admin/user/user.module.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/admin/user/users.controller.js}"></script>
+	</body>
+</html>

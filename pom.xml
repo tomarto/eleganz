@@ -68,6 +68,11 @@
 			<artifactId>hsqldb</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>20.0</version>
+		</dependency>
+		<dependency>
 			<groupId>io.reactivex</groupId>
 			<artifactId>rxjava</artifactId>
 			<version>1.0.10</version>
@@ -109,8 +114,10 @@
 					<excludes>
 						<exclude>static/prod/css/vendor.css</exclude>
 						<exclude>static/prod/css/welcome.css</exclude>
+						<exclude>static/prod/css/admin.css</exclude>
 						<exclude>static/prod/js/vendor.js</exclude>
 						<exclude>static/prod/js/welcome.js</exclude>
+						<exclude>static/prod/js/admin.js</exclude>
 					</excludes>
 				</configuration>
 			</plugin>
@@ -124,6 +131,7 @@
 <!-- 					<packagingExcludes> -->
 <!-- 						WEB-INF/classes/static/prod/js/vendor.js, WEB-INF/classes/static/prod/css/vendor.css, -->
 <!-- 						WEB-INF/classes/static/prod/js/welcome.js, WEB-INF/classes/static/prod/css/welcome.css -->
+<!-- 						WEB-INF/classes/static/prod/js/admin.js, WEB-INF/classes/static/prod/css/admin.css -->
 <!-- 					</packagingExcludes> -->
 <!-- 				</configuration> -->
 <!-- 			</plugin> -->

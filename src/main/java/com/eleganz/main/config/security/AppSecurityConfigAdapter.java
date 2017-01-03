@@ -46,14 +46,15 @@ public class AppSecurityConfigAdapter extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 				.antMatchers(publicPath).permitAll()
 				.antMatchers("/welcome/**").permitAll()
+				.antMatchers("/admin/**").hasAuthority("ADMIN")
 				.anyRequest().authenticated()
 				.and()
 				.formLogin().loginPage("/").permitAll()
-					.defaultSuccessUrl("/main", true)
+					.defaultSuccessUrl("/panel", true)
 					.failureUrl("/#/login?error")
 				.and()
 				.logout().permitAll()
-					.logoutSuccessUrl("/#/login?logout")
+					.logoutSuccessUrl("/#/inicio")
 				.and()
 				.csrf().disable();
 	}
