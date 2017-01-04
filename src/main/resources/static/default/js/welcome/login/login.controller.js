@@ -10,9 +10,9 @@
 		.module('login')
 		.controller('LoginController', LoginController);
 
-	LoginController.$inject = ['$stateParams'];
+	LoginController.$inject = ['$stateParams', 'formValidation'];
 
-	function LoginController($stateParams) {
+	function LoginController($stateParams, formValidation) {
 		var vm = this;
 
 		vm.hasLoginError = angular.isDefined($stateParams.error);
@@ -27,20 +27,8 @@
 			maxlength: 50
 		};
 
-		vm.showFieldMessages = showFieldMessages;
-		vm.fieldHasWarning = fieldHasWarning;
-		vm.fieldHasError = fieldHasError;
-
-		function showFieldMessages(formField) {
-			return formField.$dirty && formField.$invalid;
-		}
-
-		function fieldHasWarning(formField) {
-			return formField.$error.minlength || formField.$error.maxlength;
-		}
-
-		function fieldHasError(formField) {
-			return (formField.$dirty && formField.$error.required) || formField.$error.pattern;
-		}
+		vm.showFieldMessages = formValidation.showFieldMessages;
+		vm.fieldHasWarning = formValidation.fieldHasWarning;
+		vm.fieldHasError = formValidation.fieldHasError;
 	}
 })();

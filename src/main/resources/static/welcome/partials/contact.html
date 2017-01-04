@@ -1,0 +1,253 @@
+<div class="row">
+	<div class="page-header">
+		<h2>Contacto</h2>
+	</div>
+	<div class="col-sm-12">
+		<div class="panel panel-info contact-panel faded-background">
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-sm-12 col-md-4">
+						<h4>Oficinas</h4>
+						<div>
+							<span>Cumbres 2do Sector</span>
+						</div>
+						<div>
+							<span>eleganzgrupo@gmail.com</span>
+						</div>
+						<div>
+							<label>Celular:</label> <span>811-033-5100</span>
+						</div>
+					</div>
+					<div class="horizontal-line hidden-md hidden-lg"></div>
+					<div class="col-sm-12 col-md-4">
+						<h4>Contacto Directo</h4>
+						<div>
+							<span>Glenda Baker</span>
+						</div>
+						<div>
+							<label>Celular:</label> <span>811-033-5100</span>
+						</div>
+					</div>
+					<div class="horizontal-line hidden-md hidden-lg"></div>
+					<div class="col-sm-12 col-md-4">
+						<h4>Coordinadora</h4>
+						<div>
+							<span>Priscila Ram&#237;rez</span>
+						</div>
+						<div>
+							<span>priscilakrb@gmail.com</span>
+						</div>
+						<div>
+							<label>Celular:</label> <span>812-334-4665</span>
+						</div>
+					</div>
+				</div>
+				<div class="horizontal-line"></div>
+				<form id="contactForm" name="contactForm" class="contact-form" role="form" novalidate="novalidate">
+					<div class="row">
+						<div class="col-sm-12 col-md-4">
+							<div class="form-group"
+									data-ng-class="{'has-warning': cvm.fieldHasWarning(contactForm.name),
+													'has-error': cvm.fieldHasError(contactForm.name)}">
+								<label class="sr-only" for="name">Nombre</label>
+								<div class="input-group">
+									<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+									<input id="name" type="text" class="form-control" name="name"
+											placeholder="Nombre" required="required"
+											data-ng-minlength="cvm.name.minlength"
+											maxlength="{{cvm.name.maxlength}}"
+											data-ng-maxlength="cvm.name.maxlength"
+											data-ng-pattern="cvm.alphanumericRegex"
+											data-ng-model="cvm.contact.name" />
+									<span class="input-group-addon" data-ng-messages="contactForm.name.$error"
+											data-ng-show="cvm.showFieldMessages(contactForm.name)">
+										<i class="glyphicon glyphicon-remove" data-ng-message="required"
+												data-ng-show="contactForm.name.$dirty"></i>
+										<i class="glyphicon glyphicon-remove" data-ng-message="pattern"></i>
+										<i class="glyphicon glyphicon-warning-sign" data-ng-message="minlength"></i>
+									</span>
+								</div>
+								<p role="alert" class="help-block" data-ng-messages="contactForm.name.$error"
+										data-ng-show="cvm.showFieldMessages(contactForm.name)">
+									<span class="help-block" data-ng-message="required" 
+											data-ng-show="contactForm.name.$dirty">
+										Nombre es requerido
+									</span>
+									<span class="help-block" data-ng-message="pattern">
+										Nombre s&oacute;lo acepta caracteres alfanum&#233;ricos
+									</span>
+									<span class="help-block" data-ng-message="minlength">
+										Nombre debe tener un m&iacute;nimo de {{cvm.name.minlength}} caracteres
+									</span>
+									<span class="help-block" data-ng-message="maxlength">
+										Nombre debe tener un m&#225;ximo de {{cvm.name.maxlength}} caracteres
+									</span>
+								</p>
+							</div>
+							<div class="form-group"
+									data-ng-class="{'has-warning': cvm.fieldHasWarning(contactForm.email),
+													'has-error': cvm.fieldHasError(contactForm.email)}">
+								<label class="sr-only" for="email">Email</label>
+								<div class="input-group">
+									<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+									<input id="email" type="text" class="form-control" name="email"
+											placeholder="Email" required="required"
+											data-ng-minlength="cvm.email.minlength"
+											maxlength="{{cvm.email.maxlength}}"
+											data-ng-maxlength="cvm.email.maxlength"
+											data-ng-pattern="cvm.emailRegex"
+											data-ng-model="cvm.contact.email" />
+									<span class="input-group-addon" data-ng-messages="contactForm.email.$error"
+											data-ng-show="cvm.showFieldMessages(contactForm.email)">
+										<i class="glyphicon glyphicon-remove" data-ng-message="required"
+												data-ng-show="contactForm.email.$dirty"></i>
+										<i class="glyphicon glyphicon-remove" data-ng-message="pattern"></i>
+										<i class="glyphicon glyphicon-warning-sign" data-ng-message="minlength"></i>
+									</span>
+								</div>
+								<p role="alert" class="help-block" data-ng-messages="contactForm.email.$error"
+										data-ng-show="cvm.showFieldMessages(contactForm.email)">
+									<span class="help-block" data-ng-message="required" 
+											data-ng-show="contactForm.email.$dirty">
+										Email es requerido
+									</span>
+									<span class="help-block" data-ng-message="pattern">
+										Email debe ser v&#225;lido
+									</span>
+									<span class="help-block" data-ng-message="minlength">
+										Email debe tener un m&iacute;nimo de {{cvm.email.minlength}} caracteres
+									</span>
+									<span class="help-block" data-ng-message="maxlength">
+										Email debe tener un m&#225;ximo de {{cvm.email.maxlength}} caracteres
+									</span>
+								</p>
+							</div>
+							<div class="form-group"
+									data-ng-class="{'has-warning': cvm.fieldHasWarning(contactForm.phone),
+													'has-error': cvm.fieldHasError(contactForm.phone)}">
+								<label class="sr-only" for="phone">Tel&#233;fono</label>
+								<div class="input-group">
+									<span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+									<input id="phone" type="text" class="form-control" name="phone"
+											placeholder="Tel&#233;fono" required="required"
+											data-ng-minlength="cvm.phone.minlength"
+											maxlength="{{cvm.phone.maxlength}}"
+											data-ng-maxlength="cvm.phone.maxlength"
+											data-ng-pattern="cvm.phoneRegex"
+											data-ng-model="cvm.contact.phone" />
+									<span class="input-group-addon" data-ng-messages="contactForm.phone.$error"
+											data-ng-show="cvm.showFieldMessages(contactForm.phone)">
+										<i class="glyphicon glyphicon-remove" data-ng-message="required"
+												data-ng-show="contactForm.phone.$dirty"></i>
+										<i class="glyphicon glyphicon-remove" data-ng-message="pattern"></i>
+										<i class="glyphicon glyphicon-warning-sign" data-ng-message="minlength"></i>
+									</span>
+								</div>
+								<p role="alert" class="help-block" data-ng-messages="contactForm.phone.$error"
+										data-ng-show="cvm.showFieldMessages(contactForm.phone)">
+									<span class="help-block" data-ng-message="required" 
+											data-ng-show="contactForm.phone.$dirty">
+										Tel&#233;fono es requerido
+									</span>
+									<span class="help-block" data-ng-message="pattern">
+										Tel&#233;fono debe ser v&#225;lido
+									</span>
+									<span class="help-block" data-ng-message="minlength">
+										Tel&#233;fono debe tener un m&iacute;nimo de {{cvm.phone.minlength}} caracteres
+									</span>
+									<span class="help-block" data-ng-message="maxlength">
+										Tel&#233;fono debe tener un m&#225;ximo de {{cvm.phone.maxlength}} caracteres
+									</span>
+								</p>
+							</div>
+							<div class="form-group"
+									data-ng-class="{'has-warning': cvm.fieldHasWarning(contactForm.subject),
+													'has-error': cvm.fieldHasError(contactForm.subject)}">
+								<label class="sr-only" for="subject">Asunto</label>
+								<div class="input-group">
+									<span class="input-group-addon"><i class="glyphicon glyphicon-tag"></i></span>
+									<input id="subject" type="text" class="form-control" name="subject"
+											placeholder="Asunto" required="required"
+											data-ng-minlength="cvm.subject.minlength"
+											maxlength="{{cvm.subject.maxlength}}"
+											data-ng-maxlength="cvm.subject.maxlength"
+											data-ng-pattern="cvm.alphanumericRegex"
+											data-ng-model="cvm.contact.subject" />
+									<span class="input-group-addon" data-ng-messages="contactForm.subject.$error"
+											data-ng-show="cvm.showFieldMessages(contactForm.subject)">
+										<i class="glyphicon glyphicon-remove" data-ng-message="required"
+												data-ng-show="contactForm.subject.$dirty"></i>
+										<i class="glyphicon glyphicon-remove" data-ng-message="pattern"></i>
+										<i class="glyphicon glyphicon-warning-sign" data-ng-message="minlength"></i>
+									</span>
+								</div>
+								<p role="alert" class="help-block" data-ng-messages="contactForm.subject.$error"
+										data-ng-show="cvm.showFieldMessages(contactForm.subject)">
+									<span class="help-block" data-ng-message="required" 
+											data-ng-show="contactForm.subject.$dirty">
+										Asunto es requerido
+									</span>
+									<span class="help-block" data-ng-message="pattern">
+										Asunto s&oacute;lo acepta caracteres alfanum&#233;ricos
+									</span>
+									<span class="help-block" data-ng-message="minlength">
+										Asunto debe tener un m&iacute;nimo de {{cvm.subject.minlength}} caracteres
+									</span>
+									<span class="help-block" data-ng-message="maxlength">
+										Asunto debe tener un m&#225;ximo de {{cvm.subject.maxlength}} caracteres
+									</span>
+								</p>
+							</div>
+						</div>
+						<div class="col-sm-12 col-md-5">
+							<div class="form-group"
+									data-ng-class="{'has-warning': cvm.fieldHasWarning(contactForm.message),
+													'has-error': cvm.fieldHasError(contactForm.message)}">
+								<label class="sr-only" for="message">Mensaje</label>
+								<div class="input-group">
+									<span class="input-group-addon"><i class="glyphicon glyphicon-comment"></i></span>
+									<textarea id="message" rows="8" class="form-control" name="message"
+											placeholder="Mensaje" required="required"
+											data-ng-minlength="cvm.message.minlength"
+											maxlength="{{cvm.message.maxlength}}"
+											data-ng-maxlength="cvm.message.maxlength"
+											data-ng-model="cvm.contact.message"></textarea>
+									<span class="input-group-addon" data-ng-messages="contactForm.message.$error"
+											data-ng-show="cvm.showFieldMessages(contactForm.message)">
+										<i class="glyphicon glyphicon-remove" data-ng-message="required"
+												data-ng-show="contactForm.message.$dirty"></i>
+										<i class="glyphicon glyphicon-remove" data-ng-message="pattern"></i>
+										<i class="glyphicon glyphicon-warning-sign" data-ng-message="minlength"></i>
+									</span>
+								</div>
+								<p role="alert" class="help-block" data-ng-messages="contactForm.message.$error"
+										data-ng-show="cvm.showFieldMessages(contactForm.message)">
+									<span class="help-block" data-ng-message="required" 
+											data-ng-show="contactForm.message.$dirty">
+										Mensaje es requerido
+									</span>
+									<span class="help-block" data-ng-message="pattern">
+										Mensaje debe ser v&#225;lido
+									</span>
+									<span class="help-block" data-ng-message="minlength">
+										Mensaje debe tener un m&iacute;nimo de {{cvm.message.minlength}} caracteres
+									</span>
+									<span class="help-block" data-ng-message="maxlength">
+										Mensaje debe tener un m&#225;ximo de {{cvm.message.maxlength}} caracteres
+									</span>
+								</p>
+							</div>
+						</div>
+						<div class="col-sm-12 col-md-3">
+							<button id="btn-send" type="button" class="btn btn-primary"
+									data-ng-disabled="contactForm.$invalid"
+									data-ng-click="cvm.sendMessage(contactForm.$valid)">
+								Env&#237;ar Mensaje
+							</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

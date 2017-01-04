@@ -50,6 +50,16 @@
 					}
 				}
 			})
+			.state('app.contact', {
+				url : '/contacto',
+				views: {
+					'content@': {
+						templateUrl : '/welcome/partials/contact.html',
+						controller: 'ContactController',
+						controllerAs: 'cvm'
+					}
+				}
+			})
 			.state('app.login', {
 				url : '/login?error?logout',
 				views: {

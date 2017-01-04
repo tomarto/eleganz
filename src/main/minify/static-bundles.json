@@ -42,11 +42,17 @@
 				"welcome/welcome.js",
 				"welcome/welcome.routes.js",
 
+				"welcome/core/core.module.js",
+				"welcome/core/form-validation.js",
+
 				"welcome/login/login.module.js",
 				"welcome/login/login.controller.js",
 
 				"welcome/services/services.module.js",
 				"welcome/services/services.controller.js",
+
+				"welcome/contact/contact.module.js",
+				"welcome/contact/contact.controller.js",
 
 				"welcome/header/header.module.js",
 				"welcome/header/header.controller.js"
