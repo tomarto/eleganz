@@ -5,4 +5,4 @@ CREATE TABLE User (
 	role VARCHAR(10) NOT NULL
 );
 
-INSERT INTO User(username, password_hash, role) VALUES('eleganz-admin', '$2a$10$MRYcUdxwyH7RB1xGmoGIge.oJcf.8YoEmUDN3L/Emf5eg0Vy6Q7ym', 'ADMIN');
+INSERT INTO User(username, password_hash, role) VALUES('eleganz-admin', '$2a$10$MRYcUdxwyH7RB1xGmoGIge.oJcf.8YoEmUDN3L/Emf5eg0Vy6Q7ym', 'ROLE_ADMIN');

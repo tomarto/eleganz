@@ -8,5 +8,5 @@ package com.eleganz.main.model.domain.user;
  * @author Omar Ortiz.
  */
 public enum Role {
-	ADMIN, USER
+	ROLE_ADMIN, ROLE_USER
 }

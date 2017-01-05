@@ -10,12 +10,12 @@
 		.module('login')
 		.controller('ContactController', ContactController);
 
-	ContactController.$inject = ['formValidation'];
+	ContactController.$inject = ['formValidation', 'contactService'];
 
-	function ContactController(formValidation) {
+	function ContactController(formValidation, contactService) {
 		var vm = this;
 
-		vm.contact = {};
+		vm.emailRequest = {};
 		vm.alphanumericRegex = /^[A-z0-9_. -]*$/;
 		vm.emailRegex = /^[A-z_]+[A-z0-9._-]*[A-z0-9_]+@[A-z]+\.[A-z.]{2,5}$/;
 		vm.phoneRegex = /^[0-9. -]*$/;
@@ -48,7 +48,11 @@
 
 		function sendMessage(isFormValid) {
 			if(isFormValid) {
-				console.log(vm.contact);
+				console.log(vm.emailRequest);
+				contactService.sendEmail(vm.emailRequest)
+					.then(function(data) {
+						console.log(data);
+					});
 			}
 		}
 	}

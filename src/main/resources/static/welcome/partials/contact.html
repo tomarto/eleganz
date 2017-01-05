@@ -58,7 +58,7 @@
 											maxlength="{{cvm.name.maxlength}}"
 											data-ng-maxlength="cvm.name.maxlength"
 											data-ng-pattern="cvm.alphanumericRegex"
-											data-ng-model="cvm.contact.name" />
+											data-ng-model="cvm.emailRequest.name" />
 									<span class="input-group-addon" data-ng-messages="contactForm.name.$error"
 											data-ng-show="cvm.showFieldMessages(contactForm.name)">
 										<i class="glyphicon glyphicon-remove" data-ng-message="required"
@@ -96,7 +96,7 @@
 											maxlength="{{cvm.email.maxlength}}"
 											data-ng-maxlength="cvm.email.maxlength"
 											data-ng-pattern="cvm.emailRegex"
-											data-ng-model="cvm.contact.email" />
+											data-ng-model="cvm.emailRequest.email" />
 									<span class="input-group-addon" data-ng-messages="contactForm.email.$error"
 											data-ng-show="cvm.showFieldMessages(contactForm.email)">
 										<i class="glyphicon glyphicon-remove" data-ng-message="required"
@@ -134,7 +134,7 @@
 											maxlength="{{cvm.phone.maxlength}}"
 											data-ng-maxlength="cvm.phone.maxlength"
 											data-ng-pattern="cvm.phoneRegex"
-											data-ng-model="cvm.contact.phone" />
+											data-ng-model="cvm.emailRequest.phone" />
 									<span class="input-group-addon" data-ng-messages="contactForm.phone.$error"
 											data-ng-show="cvm.showFieldMessages(contactForm.phone)">
 										<i class="glyphicon glyphicon-remove" data-ng-message="required"
@@ -172,7 +172,7 @@
 											maxlength="{{cvm.subject.maxlength}}"
 											data-ng-maxlength="cvm.subject.maxlength"
 											data-ng-pattern="cvm.alphanumericRegex"
-											data-ng-model="cvm.contact.subject" />
+											data-ng-model="cvm.emailRequest.subject" />
 									<span class="input-group-addon" data-ng-messages="contactForm.subject.$error"
 											data-ng-show="cvm.showFieldMessages(contactForm.subject)">
 										<i class="glyphicon glyphicon-remove" data-ng-message="required"
@@ -211,7 +211,7 @@
 											data-ng-minlength="cvm.message.minlength"
 											maxlength="{{cvm.message.maxlength}}"
 											data-ng-maxlength="cvm.message.maxlength"
-											data-ng-model="cvm.contact.message"></textarea>
+											data-ng-model="cvm.emailRequest.message"></textarea>
 									<span class="input-group-addon" data-ng-messages="contactForm.message.$error"
 											data-ng-show="cvm.showFieldMessages(contactForm.message)">
 										<i class="glyphicon glyphicon-remove" data-ng-message="required"

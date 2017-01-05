@@ -2,13 +2,12 @@ package com.eleganz.main.validator.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.validation.Errors;
-import org.springframework.validation.Validator;
 
 import com.eleganz.main.exception.BadRequestException;
 import com.eleganz.main.exception.ConflictException;
 import com.eleganz.main.model.request.user.UserCreateRequest;
 import com.eleganz.main.service.user.UserService;
+import com.eleganz.main.validator.RequestValidator;
 
 /**
  * <p>
@@ -18,8 +17,8 @@ import com.eleganz.main.service.user.UserService;
  * 
  * @author Omar Ortiz.
  */
-@Component
-public class UserCreateRequestValidator implements Validator {
+@Component("userCreateRequestValidator")
+public class UserCreateRequestValidator extends RequestValidator {
 
 	private final UserService userService;
 
@@ -38,13 +37,8 @@ public class UserCreateRequestValidator implements Validator {
 
 	/** {@inheritDoc} */
 	@Override
-	public boolean supports(Class<?> clazz) {
-		return UserCreateRequest.class.equals(clazz);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public void validate(Object target, Errors errors) {
+	public void validate(Object target) {
+		super.validate(target);
 		UserCreateRequest request = (UserCreateRequest) target;
 		validatePasswords(request);
 		validateUsername(request);

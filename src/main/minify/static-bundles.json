@@ -53,6 +53,7 @@
 
 				"welcome/contact/contact.module.js",
 				"welcome/contact/contact.controller.js",
+				"welcome/contact/contact.service.js",
 
 				"welcome/header/header.module.js",
 				"welcome/header/header.controller.js"

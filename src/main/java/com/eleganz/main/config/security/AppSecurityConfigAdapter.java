@@ -22,12 +22,18 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
  */
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(securedEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 public class AppSecurityConfigAdapter extends WebSecurityConfigurerAdapter {
 
+	@Value("${app.vendor.path}")
+	private String vendorPath;
+
 	@Value("${app.public.path}")
 	private String publicPath;
+
+	@Value("${app.admin.path}")
+	private String adminPath;
 
 	@Autowired
 	private UserDetailsService userDetailsService;
@@ -44,10 +50,8 @@ public class AppSecurityConfigAdapter extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-				.antMatchers(publicPath).permitAll()
-				.antMatchers("/welcome/**").permitAll()
-				.antMatchers("/admin/**").hasAuthority("ADMIN")
-				.anyRequest().authenticated()
+				.antMatchers("/welcome/**", vendorPath, publicPath).permitAll()
+				.antMatchers("/admin/**", adminPath).hasAuthority("ROLE_ADMIN")
 				.and()
 				.formLogin().loginPage("/").permitAll()
 					.defaultSuccessUrl("/panel", true)

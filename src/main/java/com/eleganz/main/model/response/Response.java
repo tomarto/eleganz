@@ -39,7 +39,7 @@ public class Response<T> implements Serializable {
 	 * @param errorMessage
 	 *            a {@link java.lang.String} object.
 	 */
-	public Response(String errorMessage) {
+	public Response(String errorMessage, Boolean error) {
 		this.errorMessage = errorMessage;
 		this.errorTime = new Date().getTime();
 	}

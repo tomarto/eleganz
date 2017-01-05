@@ -6,6 +6,7 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -68,6 +69,7 @@ public class IndexController {
 	 * 
 	 * @return a {@link java.lang.String} object.
 	 */
+	@PreAuthorize("isAuthenticated()")
 	@RequestMapping(value = "/panel", method = GET)
 	public ModelAndView panel() {
 		final ModelAndView mav;
