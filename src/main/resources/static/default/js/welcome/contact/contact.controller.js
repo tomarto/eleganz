@@ -7,12 +7,12 @@
 	'use strict';
 
 	angular
-		.module('login')
+		.module('contact')
 		.controller('ContactController', ContactController);
 
-	ContactController.$inject = ['formValidation', 'contactService'];
+	ContactController.$inject = ['formValidation', 'contactService', 'toasterService'];
 
-	function ContactController(formValidation, contactService) {
+	function ContactController(formValidation, contactService, toasterService) {
 		var vm = this;
 
 		vm.emailRequest = {};
@@ -48,10 +48,12 @@
 
 		function sendMessage(isFormValid) {
 			if(isFormValid) {
-				console.log(vm.emailRequest);
 				contactService.sendEmail(vm.emailRequest)
 					.then(function(data) {
-						console.log(data);
+						toasterService.success(data);
+					})
+					.catch(function(error) {
+						toasterService.error(error.errorMessage);
 					});
 			}
 		}

@@ -11,6 +11,7 @@
 		<link rel="shortcut icon" type="image/x-icon" th:href="@{/favicon.ico}" />
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sacramento" />
 		<link rel="stylesheet" type="text/css" th:href="@{/default/css/vendor/bootstrap/bootstrap.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/default/css/vendor/toaster/toaster.css}" />
 		<link rel="stylesheet" type="text/css" th:href="@{/default/css/welcome/welcome.css}" />
 	</head>
 	<body data-ng-app="welcome">
@@ -19,6 +20,9 @@
 			<source th:src="@{/welcome/videos/background.mp4}" type="video/mp4" />
 			<source th:src="@{/welcome/videos/background.webm}" type="video/webm" />
 		</video>
+
+		<div data-toaster-container="toaster-container"
+				data-toaster-options="{'position-class': 'toast-center-wide'}"></div>
 
 		<div class="wrap">
 			<div data-ui-view="header"></div>
@@ -39,12 +43,14 @@
 		<script type="text/javascript" th:src="@{/default/js/vendor/angular/angular-touch.js}"></script>
 		<script type="text/javascript" th:src="@{/default/js/vendor/bootstrap/bootstrap.js}"></script>
 		<script type="text/javascript" th:src="@{/default/js/vendor/bootstrap/ui-bootstrap-tpls-2.3.1.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/vendor/toaster/toaster.js}"></script>
 
 		<script type="text/javascript" th:src="@{/default/js/welcome/welcome.js}"></script>
 		<script type="text/javascript" th:src="@{/default/js/welcome/welcome.routes.js}"></script>
 
 		<script type="text/javascript" th:src="@{/default/js/welcome/core/core.module.js}"></script>
 		<script type="text/javascript" th:src="@{/default/js/welcome/core/form-validation.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/welcome/core/toaster.service.js}"></script>
 
 		<script type="text/javascript" th:src="@{/default/js/welcome/login/login.module.js}"></script>
 		<script type="text/javascript" th:src="@{/default/js/welcome/login/login.controller.js}"></script>

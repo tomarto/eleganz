@@ -80,7 +80,8 @@ public class UserController {
 	@RequestMapping(value = "/user/{id}", method = GET, produces = APPLICATION_JSON_VALUE)
 	public @ResponseBody Response<User> getUser(@PathVariable Long id) {
 		return new Response<>(userService.getUserById(id)
-				.orElseThrow(() -> new NotFoundException("No se encontró al Usuario")));
+				.orElseThrow(() -> new NotFoundException(
+						String.format("No se encontró al Usuario con ID: %s", id.toString()))));
 	}
 
 	/**
@@ -100,7 +101,7 @@ public class UserController {
 		try {
 			userService.create(request);
 		} catch(DataIntegrityViolationException e) {
-			throw new ConflictException(String.format("El Usuario %s ya existe", request.getUsername()));
+			throw new ConflictException(String.format("El Usuario %s ya existe", request.getUsername()), e);
 		}
 
 		return new Response<>(String.format("El Usuario %s ha sido creado", request.getUsername()));

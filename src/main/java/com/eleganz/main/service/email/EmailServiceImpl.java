@@ -48,7 +48,7 @@ public class EmailServiceImpl implements EmailService {
 			javaMailSender.send(getMailToUser(request));
 		} catch(MessagingException e) {
 			throw new ServerErrorException("Ocurrió un error al tratar de enviar tu mensaje. "
-					+ "Por favor intenta de nuevo más tarde.");
+					+ "Por favor intenta de nuevo más tarde.", e);
 		}
 	}
 

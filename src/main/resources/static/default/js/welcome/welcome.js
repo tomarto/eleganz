@@ -13,6 +13,7 @@
 			'ngAnimate',
 			'ngTouch',
 			'ui.bootstrap',
+			'toaster',
 			'core',
 			'header',
 			'services',

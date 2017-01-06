@@ -33,4 +33,18 @@ public class ConflictException extends RuntimeException {
 	public ConflictException(String message) {
 		super(message);
 	}
+
+	/**
+	 * <p>
+	 * Constructor for ConflictException.
+	 * </p>
+	 * 
+	 * @param message
+	 *            a {@link java.lang.String} object.
+	 * @param cause
+	 *            a {@link java.lang.Throwable} object.
+	 */
+	public ConflictException(String message, Throwable cause) {
+		super(message, cause);
+	}
 }

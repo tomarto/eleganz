@@ -33,4 +33,18 @@ public class ServerErrorException extends RuntimeException {
 	public ServerErrorException(String message) {
 		super(message);
 	}
+
+	/**
+	 * <p>
+	 * Constructor for ServerErrorException.
+	 * </p>
+	 * 
+	 * @param message
+	 *            a {@link java.lang.String} object.
+	 * @param cause
+	 *            a {@link java.lang.Throwable} object.
+	 */
+	public ServerErrorException(String message, Throwable cause) {
+		super(message, cause);
+	}
 }

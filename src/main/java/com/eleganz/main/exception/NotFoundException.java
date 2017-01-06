@@ -33,4 +33,18 @@ public class NotFoundException extends RuntimeException {
 	public NotFoundException(String message) {
 		super(message);
 	}
+
+	/**
+	 * <p>
+	 * Constructor for NotFoundException.
+	 * </p>
+	 * 
+	 * @param message
+	 *            a {@link java.lang.String} object.
+	 * @param cause
+	 *            a {@link java.lang.Throwable} object.
+	 */
+	public NotFoundException(String message, Throwable cause) {
+		super(message, cause);
+	}
 }

@@ -32,6 +32,10 @@ body {
 	transition: 1s opacity;
 }
 
+#toast-container.toast-center-wide {
+    width: 100%;
+}
+
 .wrap {
 	min-height: 100%;
 }
@@ -142,11 +146,27 @@ body {
 
 /* Desktop-specific */
 @media screen and (min-width: 768px) {
-	
+	.toast-center-wide {
+	    top: 12px;
+	}
+
+	#toast-container.toast-center-wide > div {
+	    margin: auto;
+	    width: 50%;
+	}
 }
 
 /* Mobile-specific */
 @media screen and (max-width: 767px) {
+	.toast-center-wide {
+	    top: 50px;
+	}
+
+	#toast-container.toast-center-wide > div {
+	    margin: auto;
+	    width: 80%;
+	}
+
 	.custom-navbar-inverse {
 		background-color: #222;
 		border-color: #080808;

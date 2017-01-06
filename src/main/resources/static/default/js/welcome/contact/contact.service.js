@@ -10,9 +10,9 @@
 		.module('contact')
 		.factory('contactService', contactService);
 
-	contactService.$inject = ['$http'];
+	contactService.$inject = ['$http', '$q'];
 
-	function contactService($http) {
+	function contactService($http, $q) {
 		var factory = {
 			sendEmail: sendEmail
 		};
@@ -29,7 +29,7 @@
 			}
 
 			function sendEmailFailed(error) {
-				console.log(error);
+				return $q.reject(error.data);
 			}
 		}
 	}
