@@ -11,6 +11,9 @@
 		<link rel="shortcut icon" type="image/x-icon" th:href="@{/favicon.ico}" />
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sacramento" />
 		<link rel="stylesheet" type="text/css" th:href="@{/default/css/vendor/bootstrap/bootstrap.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/default/css/vendor/font-awesome/font-awesome.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/default/css/vendor/toaster/toaster.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/default/css/common/common.css}" />
 		<link rel="stylesheet" type="text/css" th:href="@{/default/css/admin/admin.css}" />
 	</head>
 	<body data-ng-app="admin">
@@ -19,6 +22,11 @@
 			<source th:src="@{/admin/videos/background.mp4}" type="video/mp4" />
 			<source th:src="@{/admin/videos/background.webm}" type="video/webm" />
 		</video>
+
+		<div data-spinner="spinner"></div>
+
+		<div data-toaster-container="toaster-container"
+				data-toaster-options="{'position-class': 'toast-center-wide'}"></div>
 
 		<div class="wrap">
 			<div data-ui-view="header"></div>
@@ -39,6 +47,13 @@
 		<script type="text/javascript" th:src="@{/default/js/vendor/angular/angular-touch.js}"></script>
 		<script type="text/javascript" th:src="@{/default/js/vendor/bootstrap/bootstrap.js}"></script>
 		<script type="text/javascript" th:src="@{/default/js/vendor/bootstrap/ui-bootstrap-tpls-2.3.1.js}"></script>
+
+		<script type="text/javascript" th:src="@{/default/js/common/core/core.module.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/common/core/form-validation.service.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/common/core/notifier.service.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/common/core/pending-request.service.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/common/core/toaster.service.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/common/core/spinner.directive.js}"></script>
 
 		<script type="text/javascript" th:src="@{/default/js/admin/admin.js}"></script>
 		<script type="text/javascript" th:src="@{/default/js/admin/admin.routes.js}"></script>

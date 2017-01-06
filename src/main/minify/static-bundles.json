@@ -11,6 +11,13 @@
 		},
 		{
 			"type": "css",
+			"name": "common.css",
+			"files": [
+				"common/common.css"
+			]
+		},
+		{
+			"type": "css",
 			"name": "welcome.css",
 			"files": [
 				"welcome/welcome.css"
@@ -40,17 +47,22 @@
 		},
 		{
 			"type": "js",
+			"name": "common.js",
+			"files": [
+				"common/core/core.module.js",
+				"common/core/form-validation.service.js",
+				"common/core/notifier.service.js",
+				"common/core/pending-request.service.js",
+				"common/core/toaster.service.js",
+				"common/core/spinner.directive.js"
+			]
+		},
+		{
+			"type": "js",
 			"name": "welcome.js",
 			"files": [
 				"welcome/welcome.js",
 				"welcome/welcome.routes.js",
-
-				"welcome/core/core.module.js",
-				"welcome/core/form-validation.service.js",
-				"welcome/core/notifier.service.js",
-				"welcome/core/pending-request.service.js",
-				"welcome/core/toaster.service.js",
-				"welcome/core/spinner.directive.js",
 
 				"welcome/login/login.module.js",
 				"welcome/login/login.controller.js",

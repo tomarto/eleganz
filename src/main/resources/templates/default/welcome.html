@@ -13,6 +13,7 @@
 		<link rel="stylesheet" type="text/css" th:href="@{/default/css/vendor/bootstrap/bootstrap.css}" />
 		<link rel="stylesheet" type="text/css" th:href="@{/default/css/vendor/font-awesome/font-awesome.css}" />
 		<link rel="stylesheet" type="text/css" th:href="@{/default/css/vendor/toaster/toaster.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/default/css/common/common.css}" />
 		<link rel="stylesheet" type="text/css" th:href="@{/default/css/welcome/welcome.css}" />
 	</head>
 	<body data-ng-app="welcome">
@@ -48,15 +49,15 @@
 		<script type="text/javascript" th:src="@{/default/js/vendor/bootstrap/ui-bootstrap-tpls-2.3.1.js}"></script>
 		<script type="text/javascript" th:src="@{/default/js/vendor/toaster/toaster.js}"></script>
 
+		<script type="text/javascript" th:src="@{/default/js/common/core/core.module.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/common/core/form-validation.service.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/common/core/notifier.service.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/common/core/pending-request.service.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/common/core/toaster.service.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/common/core/spinner.directive.js}"></script>
+
 		<script type="text/javascript" th:src="@{/default/js/welcome/welcome.js}"></script>
 		<script type="text/javascript" th:src="@{/default/js/welcome/welcome.routes.js}"></script>
-
-		<script type="text/javascript" th:src="@{/default/js/welcome/core/core.module.js}"></script>
-		<script type="text/javascript" th:src="@{/default/js/welcome/core/form-validation.service.js}"></script>
-		<script type="text/javascript" th:src="@{/default/js/welcome/core/notifier.service.js}"></script>
-		<script type="text/javascript" th:src="@{/default/js/welcome/core/pending-request.service.js}"></script>
-		<script type="text/javascript" th:src="@{/default/js/welcome/core/toaster.service.js}"></script>
-		<script type="text/javascript" th:src="@{/default/js/welcome/core/spinner.directive.js}"></script>
 
 		<script type="text/javascript" th:src="@{/default/js/welcome/login/login.module.js}"></script>
 		<script type="text/javascript" th:src="@{/default/js/welcome/login/login.controller.js}"></script>

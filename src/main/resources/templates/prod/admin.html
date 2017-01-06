@@ -11,6 +11,7 @@
 		<link rel="shortcut icon" type="image/x-icon" th:href="@{/favicon.ico}" />
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sacramento" />
 		<link rel="stylesheet" type="text/css" th:href="@{/prod/css/vendor.min.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/prod/css/common.min.css}" />
 		<link rel="stylesheet" type="text/css" th:href="@{/prod/css/admin.min.css}" />
 	</head>
 	<body data-ng-app="admin">
@@ -19,6 +20,11 @@
 			<source th:src="@{/admin/videos/background.mp4}" type="video/mp4" />
 			<source th:src="@{/admin/videos/background.webm}" type="video/webm" />
 		</video>
+
+		<div data-spinner="spinner"></div>
+
+		<div data-toaster-container="toaster-container"
+				data-toaster-options="{'position-class': 'toast-center-wide'}"></div>
 
 		<div class="wrap">
 			<div data-ui-view="header"></div>
@@ -32,6 +38,7 @@
 		</div>
 
 		<script type="text/javascript" th:src="@{/prod/js/vendor.min.js}"></script>
+		<script type="text/javascript" th:src="@{/prod/js/common.min.js}"></script>
 		<script type="text/javascript" th:src="@{/prod/js/admin.min.js}"></script>
 	</body>
 </html>

@@ -29,6 +29,9 @@ public class AppSecurityConfigAdapter extends WebSecurityConfigurerAdapter {
 	@Value("${app.vendor.path}")
 	private String vendorPath;
 
+	@Value("${app.common.path}")
+	private String commonPath;
+
 	@Value("${app.public.path}")
 	private String publicPath;
 
@@ -50,7 +53,7 @@ public class AppSecurityConfigAdapter extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-				.antMatchers("/welcome/**", vendorPath, publicPath).permitAll()
+				.antMatchers("/welcome/**", vendorPath, commonPath, publicPath).permitAll()
 				.antMatchers("/admin/**", adminPath).hasAuthority("ROLE_ADMIN")
 				.and()
 				.formLogin().loginPage("/").permitAll()
