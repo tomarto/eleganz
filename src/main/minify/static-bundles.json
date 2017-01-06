@@ -5,6 +5,7 @@
 			"name": "vendor.css",
 			"files": [
 				"vendor/bootstrap/bootstrap.css",
+				"vendor/font-awesome/font-awesome.css",
 				"vendor/toaster/toaster.css"
 			]
 		},
@@ -45,8 +46,11 @@
 				"welcome/welcome.routes.js",
 
 				"welcome/core/core.module.js",
-				"welcome/core/form-validation.js",
+				"welcome/core/form-validation.service.js",
+				"welcome/core/notifier.service.js",
+				"welcome/core/pending-request.service.js",
 				"welcome/core/toaster.service.js",
+				"welcome/core/spinner.directive.js",
 
 				"welcome/login/login.module.js",
 				"welcome/login/login.controller.js",

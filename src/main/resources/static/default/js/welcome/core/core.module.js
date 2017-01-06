@@ -7,5 +7,7 @@
 	'use strict';
 
 	angular
-		.module('core', []);
+		.module('core', [
+			'toaster'
+		]);
 })();

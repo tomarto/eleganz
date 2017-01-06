@@ -32,6 +32,26 @@ body {
 	transition: 1s opacity;
 }
 
+.loading-overlay {
+	position: fixed;
+	text-align: center;
+	top: 50%;
+	left: 50%;
+	min-width: 100%;
+	min-height: 100%;
+	width: auto;
+	height: auto;
+	z-index: 99999;
+	transform: translateX(-50%) translateY(-50%);
+	background-color: rgba(0, 0, 0, .55);
+	background-size: cover;
+	transition: 1s opacity;
+}
+
+.loading-overlay .fa-spinner {
+	font-size: 75px;
+}
+
 #toast-container.toast-center-wide {
     width: 100%;
 }
@@ -146,6 +166,10 @@ body {
 
 /* Desktop-specific */
 @media screen and (min-width: 768px) {
+	.loading-overlay {
+		padding-top: 25%;
+	}
+
 	.toast-center-wide {
 	    top: 12px;
 	}
@@ -158,6 +182,10 @@ body {
 
 /* Mobile-specific */
 @media screen and (max-width: 767px) {
+	.loading-overlay {
+		padding-top: 50%;
+	}
+
 	.toast-center-wide {
 	    top: 50px;
 	}

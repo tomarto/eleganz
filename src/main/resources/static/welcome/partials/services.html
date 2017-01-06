@@ -1,15 +1,13 @@
-<div class="row">
-	<div class="page-header">
-		<h2>Nuestros Servicios</h2>
-	</div>
-	<div data-ng-repeat="row in svm.rows" class="row">
-		<div data-ng-repeat="service in row.services" class="col-sm-12 col-md-6">
-			<div class="thumbnail faded-background">
-				<img alt="{{service.name}}" data-ng-src="{{service.imageUrl}}">
-				<div class="caption">
-					<h3 data-ng-bind="service.name"></h3>
-					<p data-ng-bind="service.description"></p>
-				</div>
+<div class="page-header">
+	<h2>Nuestros Servicios</h2>
+</div>
+<div data-ng-repeat="row in svm.rows" class="row">
+	<div data-ng-repeat="service in row.services" class="col-sm-12 col-md-6">
+		<div class="thumbnail faded-background">
+			<img alt="{{service.name}}" data-ng-src="{{service.imageUrl}}">
+			<div class="caption">
+				<h3 data-ng-bind="service.name"></h3>
+				<p data-ng-bind="service.description"></p>
 			</div>
 		</div>
 	</div>

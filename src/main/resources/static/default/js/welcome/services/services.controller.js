@@ -22,7 +22,7 @@
 						name: 'Sombreros',
 						imageUrl: '/welcome/images/servicios/sombreros.png',
 						description: 'Has que tu evento sea colorido con nuestros diferentes tipos de sombreros y ' +
-								'divi&#233;rtanse como nunca.'
+								'diviértanse como nunca.'
 					},
 					{
 						name: 'Robot LED',
@@ -36,12 +36,12 @@
 					{
 						name: 'Accesorios',
 						imageUrl: '/welcome/images/servicios/accesorios.png',
-						description: 'Divi&#233;rtete con los accesorios referentes al tipo de m&#250;sica.'
+						description: 'Diviértete con los accesorios referentes al tipo de música.'
 					},
 					{
 						name: 'Letras de boda',
 						imageUrl: '/welcome/images/servicios/letras-boda.png',
-						description: 'Decora el recibidor o el sal&#243;n con las letras de boda gigante.'
+						description: 'Decora el recibidor o el salón con las letras de boda gigante.'
 					}
 				]
 			},
@@ -50,7 +50,7 @@
 					{
 						name: 'Arlequin de Carnaval',
 						imageUrl: '/welcome/images/servicios/arlequin-carnaval.png',
-						description: 'Deja salir el esp&#237;ritu de fiesta con nuestros arlequines de carnaval.'
+						description: 'Deja salir el espíritu de fiesta con nuestros arlequines de carnaval.'
 					}
 				]
 			}
