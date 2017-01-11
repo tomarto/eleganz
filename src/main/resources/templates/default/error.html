@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<meta name="theme-color" content="#B39F3C" />
+		<title>Eleganz Admin</title>
+		<link rel="shortcut icon" type="image/x-icon" th:href="@{/favicon.ico}" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sacramento" />
+		<link rel="stylesheet" type="text/css" th:href="@{/default/css/vendor/bootstrap/bootstrap.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/default/css/common/common.css}" />
+	</head>
+	<body>
+		<div class="wrap error">
+			<div class="container error">
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="jumbotron text-center">
+							<h1>
+								<span th:text="${statusCode}" class="status"></span>
+								<span th:text="${statusMessage}"></span>
+							</h1>
+							<p>
+								<span th:text="${message}">
+									Lo sentimos, ocurrió un error. Por favor intenta más tarde.
+								</span>
+							</p>
+							<p>
+								<a class="btn btn-primary btn-lg" href="/" role="button">
+									<i class="glyphicon glyphicon-home"></i> Inicio
+								</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="footer">
+			<div class="container error">
+				<p>&copy; Eleganz. Current env: <span th:text="${env}">Environment</span></p>
+			</div>
+		</div>
+	</body>
+</html>

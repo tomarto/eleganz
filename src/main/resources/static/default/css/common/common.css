@@ -56,6 +56,14 @@ body {
     width: 100%;
 }
 
+.container.error {
+	color: #333;
+}
+
+.error .status {
+	color: #e70b0b;
+}
+
 .wrap {
 	min-height: 100%;
 }
@@ -130,6 +138,10 @@ body {
 
 /* Desktop-specific */
 @media screen and (min-width: 768px) {
+	.wrap.error {
+		padding-top: 100px;
+	}
+
 	.loading-overlay {
 		padding-top: 25%;
 	}
