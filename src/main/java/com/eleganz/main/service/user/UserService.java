@@ -4,7 +4,8 @@ import java.util.Collection;
 import java.util.Optional;
 
 import com.eleganz.main.model.domain.user.User;
-import com.eleganz.main.model.request.user.UserCreateRequest;
+import com.eleganz.main.model.request.user.UserRequest;
+import com.eleganz.main.model.response.user.UserResponse;
 
 /**
  * <p>
@@ -17,23 +18,23 @@ public interface UserService {
 
 	/**
 	 * <p>
-	 * Retrieves a collection of all {@link com.eleganz.main.model.domain.user.User}.
+	 * Retrieves a collection of all {@link com.eleganz.main.model.response.user.UserResponse}.
 	 * </p>
 	 * 
-	 * @return a {@link java.util.Collection<User>} object.
+	 * @return a {@link java.util.Collection<UserResponse>} object.
 	 */
-	Collection<User> getAllUsers();
+	Collection<UserResponse> getAllUsers();
 
 	/**
 	 * <p>
-	 * Retrieves a single {@link com.eleganz.main.model.domain.user.User} from its id.
+	 * Retrieves a single {@link com.eleganz.main.model.response.user.UserResponse} from its id.
 	 * </p>
 	 * 
 	 * @param id
 	 *            {@link java.lang.Long}
-	 * @return a {@link java.util.Optional<User>} object.
+	 * @return a {@link java.util.Optional<UserResponse>} object.
 	 */
-	Optional<User> getUserById(long id);
+	Optional<UserResponse> getUserById(long id);
 
 	/**
 	 * <p>
@@ -48,13 +49,13 @@ public interface UserService {
 
 	/**
 	 * <p>
-	 * Creates a new {@link com.eleganz.main.model.domain.user.User} from the
-	 * {@link com.eleganz.main.model.request.user.UserCreateRequest} request.
+	 * Creates a new {@link com.eleganz.main.model.response.user.UserResponse} from the
+	 * {@link com.eleganz.main.model.request.user.UserRequest} request.
 	 * </p>
 	 * 
 	 * @param request
-	 *            {@link com.eleganz.main.model.request.user.UserCreateRequest}
-	 * @return a {@link com.eleganz.main.model.domain.user.User} object.
+	 *            {@link com.eleganz.main.model.request.user.UserRequest}
+	 * @return a {@link com.eleganz.main.model.response.user.UserResponse} object.
 	 */
-	User create(UserCreateRequest request);
+	UserResponse create(UserRequest request);
 }

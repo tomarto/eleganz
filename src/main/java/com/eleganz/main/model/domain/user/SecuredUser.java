@@ -2,6 +2,8 @@ package com.eleganz.main.model.domain.user;
 
 import org.springframework.security.core.authority.AuthorityUtils;
 
+import com.eleganz.main.model.user.Role;
+
 /**
  * <p>
  * SecuredUser class. User used for Spring Security.

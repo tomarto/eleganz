@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.eleganz.main.exception.ConflictException;
 import com.eleganz.main.exception.NotFoundException;
-import com.eleganz.main.model.domain.user.User;
-import com.eleganz.main.model.request.user.UserCreateRequest;
+import com.eleganz.main.model.request.user.UserRequest;
 import com.eleganz.main.model.response.Response;
+import com.eleganz.main.model.response.user.UserResponse;
 import com.eleganz.main.service.user.UserService;
 import com.eleganz.main.validator.RequestValidator;
 
@@ -59,11 +59,11 @@ public class UserController {
 	 * Retrieves a list of User.
 	 * </p>
 	 * 
-	 * @return a {@link com.eleganz.main.model.response.Response<Collection<User>>} object.
+	 * @return a {@link com.eleganz.main.model.response.Response<Collection<UserResponse>>} object.
 	 */
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping(value = "/user", method = GET, produces = APPLICATION_JSON_VALUE)
-	public @ResponseBody Response<Collection<User>> getUsers() {
+	public @ResponseBody Response<Collection<UserResponse>> getUsers() {
 		return new Response<>(userService.getAllUsers());
 	}
 
@@ -74,11 +74,11 @@ public class UserController {
 	 * 
 	 * @param id
 	 *            a {@link java.lang.Long} object.
-	 * @return a {@link com.eleganz.main.model.response.Response<User>} object.
+	 * @return a {@link com.eleganz.main.model.response.Response<UserResponse>} object.
 	 */
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping(value = "/user/{id}", method = GET, produces = APPLICATION_JSON_VALUE)
-	public @ResponseBody Response<User> getUser(@PathVariable Long id) {
+	public @ResponseBody Response<UserResponse> getUser(@PathVariable Long id) {
 		return new Response<>(userService.getUserById(id)
 				.orElseThrow(() -> new NotFoundException(
 						String.format("No se encontró al Usuario con ID: %s", id.toString()))));
@@ -90,12 +90,12 @@ public class UserController {
 	 * </p>
 	 * 
 	 * @param request
-	 *            a {@link com.eleganz.main.model.request.user.UserCreateRequest} object.
+	 *            a {@link com.eleganz.main.model.request.user.UserRequest} object.
 	 * @return a {@link com.eleganz.main.model.response.Response<String>} object.
 	 */
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping(value = "/user", method = POST, produces = APPLICATION_JSON_VALUE)
-	public @ResponseBody Response<String> createUser(@Valid UserCreateRequest request) {
+	public @ResponseBody Response<String> createUser(@Valid UserRequest request) {
 		userCreateRequestValidator.validate(request);
 
 		try {

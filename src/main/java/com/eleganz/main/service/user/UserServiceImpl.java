@@ -2,14 +2,17 @@ package com.eleganz.main.service.user;
 
 import java.util.Collection;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.eleganz.main.mapper.response.ResponseMapper;
 import com.eleganz.main.model.domain.user.User;
-import com.eleganz.main.model.request.user.UserCreateRequest;
+import com.eleganz.main.model.request.user.UserRequest;
+import com.eleganz.main.model.response.user.UserResponse;
 import com.eleganz.main.repository.user.UserRepository;
 
 /**
@@ -23,6 +26,7 @@ import com.eleganz.main.repository.user.UserRepository;
 public class UserServiceImpl implements UserService {
 
 	private final UserRepository userRepository;
+	private final ResponseMapper<User, UserResponse> userResponseMapper;
 
 	/**
 	 * <p>
@@ -31,22 +35,27 @@ public class UserServiceImpl implements UserService {
 	 * 
 	 * @param userRepository
 	 *            a {@link com.eleganz.main.repository.user.UserRepository} object.
+	 * @param userResponseMapper
+	 *            a {@link com.eleganz.main.mapper.response.ResponseMapper<User, UserResponse>} object.
 	 */
 	@Autowired
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, ResponseMapper<User, UserResponse> userResponseMapper) {
         this.userRepository = userRepository;
+        this.userResponseMapper = userResponseMapper;
     }
 
 	/** {@inheritDoc} */
 	@Override
-	public Collection<User> getAllUsers() {
-		return userRepository.findAll(new Sort("username"));
+	public Collection<UserResponse> getAllUsers() {
+		return userRepository.findAll(new Sort("username")).stream()
+				.map(user -> userResponseMapper.convert(user))
+				.collect(Collectors.toList());
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Optional<User> getUserById(long id) {
-		return Optional.ofNullable(userRepository.findOne(id));
+	public Optional<UserResponse> getUserById(long id) {
+		return Optional.ofNullable(userResponseMapper.convert(userRepository.findOne(id)));
 	}
 
 	/** {@inheritDoc} */
@@ -57,11 +66,11 @@ public class UserServiceImpl implements UserService {
 
 	/** {@inheritDoc} */
 	@Override
-	public User create(UserCreateRequest request) {
+	public UserResponse create(UserRequest request) {
 		final User user = new User();
 		user.setUsername(request.getUsername());
 		user.setPasswordHash(new BCryptPasswordEncoder().encode(request.getPassword()));
 		user.setRole(request.getRole());
-		return userRepository.save(user);
+		return userResponseMapper.convert(userRepository.save(user));
 	}
 }

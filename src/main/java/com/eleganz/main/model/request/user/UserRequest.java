@@ -2,33 +2,48 @@ package com.eleganz.main.model.request.user;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 import org.hibernate.validator.constraints.NotEmpty;
 
-import com.eleganz.main.model.domain.user.Role;
+import com.eleganz.main.model.user.Role;
 
 /**
  * <p>
- * UserCreateRequest class. User request received from client for creation.
+ * UserRequest class. User request received from client for creation.
  * </p>
  * 
  * @author Omar Ortiz.
  */
-public class UserCreateRequest implements Serializable {
+public class UserRequest implements Serializable {
 
 	/** Constant <code>serialVersionUID=-9077759529079281285L</code> */
 	private static final long serialVersionUID = -9077759529079281285L;
 
 	@NotEmpty
+	@Size(min = 5, max = 50)
+	@Pattern(regexp = "^[A-z0-9_. -]*$")
 	private String username;
 
 	@NotEmpty
+	@Size(min = 6, max = 50)
+	@Pattern(regexp = "^[A-z0-9_. -]*$")
 	private String password;
 
 	@NotEmpty
+	@Size(min = 6, max = 50)
+	@Pattern(regexp = "^[A-z0-9_. -]*$")
 	private String passwordRepeat;
 
 	@NotEmpty
 	private Role role;
+
+	@Size(min = 6, max = 254)
+	@Pattern(regexp = "^[A-z_]+[A-z0-9._-]*[A-z0-9_]+@[A-z]+.[A-z.]{2,5}$")
+	private String email;
+
+	private UserDetailRequest userDetail;
 
 	/**
 	 * <p>
@@ -120,5 +135,51 @@ public class UserCreateRequest implements Serializable {
 	 */
 	public void setRole(Role role) {
 		this.role = role;
+	}
+
+	/**
+	 * <p>
+	 * Getter for the field <code>email</code>.
+	 * </p>
+	 * 
+	 * @return the email
+	 */
+	public String getEmail() {
+		return email;
+	}
+
+	/**
+	 * <p>
+	 * Setter for the field <code>email</code>.
+	 * </p>
+	 * 
+	 * @param email
+	 *            the email to set
+	 */
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	/**
+	 * <p>
+	 * Getter for the field <code>userDetail</code>.
+	 * </p>
+	 * 
+	 * @return the userDetail
+	 */
+	public UserDetailRequest getUserDetail() {
+		return userDetail;
+	}
+
+	/**
+	 * <p>
+	 * Setter for the field <code>userDetail</code>.
+	 * </p>
+	 * 
+	 * @param userDetail
+	 *            the userDetail to set
+	 */
+	public void setUserDetail(UserDetailRequest userDetail) {
+		this.userDetail = userDetail;
 	}
 }

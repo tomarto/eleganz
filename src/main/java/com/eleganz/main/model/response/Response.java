@@ -121,6 +121,6 @@ public class Response<T> implements Serializable {
 	 *            a {@link java.lang.String} object.
 	 */
 	public String getErrorMessage() {
-		return String.format("%s Codigo de error: %s", message, errorTime);
+		return errorTime == null ? null : String.format("%s Codigo de error: %s", message, errorTime);
 	}
 }

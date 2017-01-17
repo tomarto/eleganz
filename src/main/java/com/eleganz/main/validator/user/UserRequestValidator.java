@@ -5,33 +5,33 @@ import org.springframework.stereotype.Component;
 
 import com.eleganz.main.exception.BadRequestException;
 import com.eleganz.main.exception.ConflictException;
-import com.eleganz.main.model.request.user.UserCreateRequest;
+import com.eleganz.main.model.request.user.UserRequest;
 import com.eleganz.main.service.user.UserService;
 import com.eleganz.main.validator.RequestValidator;
 
 /**
  * <p>
- * UserCreateRequestValidator class.
- * Validator to validate {@link com.eleganz.main.model.request.user.UserCreateRequest}.
+ * UserRequestValidator class.
+ * Validator to validate {@link com.eleganz.main.model.request.user.UserRequest}.
  * </p>
  * 
  * @author Omar Ortiz.
  */
 @Component("userCreateRequestValidator")
-public class UserCreateRequestValidator extends RequestValidator {
+public class UserRequestValidator extends RequestValidator {
 
 	private final UserService userService;
 
 	/**
 	 * <p>
-	 * Constructor for UserCreateRequestValidator.
+	 * Constructor for UserRequestValidator.
 	 * </p>
 	 * 
 	 * @param userService
 	 *            a {@link com.eleganz.main.service.user.UserService} object.
 	 */
 	@Autowired
-	public UserCreateRequestValidator(UserService userService) {
+	public UserRequestValidator(UserService userService) {
 		this.userService = userService;
 	}
 
@@ -39,7 +39,7 @@ public class UserCreateRequestValidator extends RequestValidator {
 	@Override
 	public void validate(Object target) {
 		super.validate(target);
-		UserCreateRequest request = (UserCreateRequest) target;
+		UserRequest request = (UserRequest) target;
 		validatePasswords(request);
 		validateUsername(request);
 	}
@@ -50,9 +50,9 @@ public class UserCreateRequestValidator extends RequestValidator {
 	 * </p>
 	 * 
 	 * @param request
-	 *            a {@link com.eleganz.main.model.request.user.UserCreateRequest} object.
+	 *            a {@link com.eleganz.main.model.request.user.UserRequest} object.
 	 */
-	private void validatePasswords(UserCreateRequest request) {
+	private void validatePasswords(UserRequest request) {
 		if(!request.getPassword().equals(request.getPasswordRepeat())) {
 			throw new BadRequestException("Passwords does not match");
 		}
@@ -64,9 +64,9 @@ public class UserCreateRequestValidator extends RequestValidator {
 	 * </p>
 	 * 
 	 * @param request
-	 *            a {@link com.eleganz.main.model.request.user.UserCreateRequest} object.
+	 *            a {@link com.eleganz.main.model.request.user.UserRequest} object.
 	 */
-	private void validateUsername(UserCreateRequest request) {
+	private void validateUsername(UserRequest request) {
 		if(userService.getUserByUsername(request.getUsername()).isPresent()) {
 			throw new ConflictException("Username already exists");
 		}

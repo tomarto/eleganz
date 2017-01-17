@@ -1,5 +1,6 @@
 package com.eleganz.main.model.domain.user;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -7,8 +8,12 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.eleganz.main.model.user.Role;
+import com.eleganz.main.model.user.UserBase;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
@@ -20,22 +25,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 @Entity
 @Table(name = "User")
-public class User {
+public class User extends UserBase {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-
-	@Column(nullable = false, unique = true)
-	private String username;
-
-	@JsonIgnore
-	@Column(name = "password_hash", nullable = false)
 	private String passwordHash;
-
-	@Column(nullable = false)
-	@Enumerated(EnumType.STRING)
-	private Role role;
+	private UserDetail userDetail;
 
 	/**
 	 * <p>
@@ -44,20 +37,10 @@ public class User {
 	 * 
 	 * @return the id
 	 */
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId() {
-		return id;
-	}
-
-	/**
-	 * <p>
-	 * Setter for the field <code>id</code>.
-	 * </p>
-	 * 
-	 * @param id
-	 *            the id to set
-	 */
-	public void setId(Long id) {
-		this.id = id;
+		return super.getId();
 	}
 
 	/**
@@ -67,20 +50,9 @@ public class User {
 	 * 
 	 * @return the username
 	 */
+	@Column(nullable = false, unique = true)
 	public String getUsername() {
-		return username;
-	}
-
-	/**
-	 * <p>
-	 * Setter for the field <code>username</code>.
-	 * </p>
-	 * 
-	 * @param username
-	 *            the username to set
-	 */
-	public void setUsername(String username) {
-		this.username = username;
+		return super.getUsername();
 	}
 
 	/**
@@ -90,6 +62,8 @@ public class User {
 	 * 
 	 * @return the passwordHash
 	 */
+	@JsonIgnore
+	@Column(name = "password_hash", nullable = false)
 	public String getPasswordHash() {
 		return passwordHash;
 	}
@@ -113,19 +87,46 @@ public class User {
 	 * 
 	 * @return the role
 	 */
+	@Column(nullable = false)
+	@Enumerated(EnumType.STRING)
 	public Role getRole() {
-		return role;
+		return super.getRoleEnum();
 	}
 
 	/**
 	 * <p>
-	 * Setter for the field <code>role</code>.
+	 * Getter for the field <code>email</code>.
 	 * </p>
 	 * 
-	 * @param role
-	 *            the role to set
+	 * @return the email
 	 */
-	public void setRole(Role role) {
-		this.role = role;
+	@Column(nullable = false)
+	public String getEmail() {
+		return super.getEmail();
+	}
+
+	/**
+	 * <p>
+	 * Getter for the field <code>userDetail</code>.
+	 * </p>
+	 * 
+	 * @return the userDetail
+	 */
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "user_detail_id")
+	public UserDetail getUserDetail() {
+		return userDetail;
+	}
+
+	/**
+	 * <p>
+	 * Setter for the field <code>userDetail</code>.
+	 * </p>
+	 * 
+	 * @param userDetail
+	 *            the userDetail to set
+	 */
+	public void setUserDetail(UserDetail userDetail) {
+		this.userDetail = userDetail;
 	}
 }
