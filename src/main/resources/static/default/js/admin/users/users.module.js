@@ -7,5 +7,5 @@
 	'use strict';
 
 	angular
-		.module('user', []);
+		.module('users', []);
 })();

@@ -1,5 +1,10 @@
 @CHARSET "ISO-8859-1";
 
+.users table {
+	background-color: #fff;
+	color: #333;
+}
+
 /* Desktop-specific */
 @media screen and (min-width: 768px) {
 	

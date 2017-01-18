@@ -7,12 +7,15 @@
 	'use strict';
 
 	angular
-		.module('user')
+		.module('users')
 		.controller('UsersController', UsersController);
 
-	UsersController.$inject = [];
+	UsersController.$inject = ['users'];
 
-	function UsersController() {
+	function UsersController(users) {
 		var vm = this;
+
+		vm.users = users;
+		console.log(users);
 	}
 })();

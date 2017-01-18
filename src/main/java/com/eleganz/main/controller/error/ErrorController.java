@@ -1,12 +1,17 @@
 package com.eleganz.main.controller.error;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.web.ErrorAttributes;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.context.request.RequestAttributes;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -29,6 +34,9 @@ public class ErrorController implements org.springframework.boot.autoconfigure.w
 	@Value("${app.errorPage}")
 	private String errorPage;
 
+	@Autowired
+    private ErrorAttributes errorAttributes;
+
 	/**
 	 * <p>
 	 * Retrieves the error page.
@@ -37,7 +45,10 @@ public class ErrorController implements org.springframework.boot.autoconfigure.w
 	 * @return a {@link java.lang.String} object.
 	 */
 	@RequestMapping(value = PATH)
-	public ModelAndView error(HttpServletResponse response, Exception e) {
+	public ModelAndView error(HttpServletRequest request, HttpServletResponse response, Exception e) {
+		final RequestAttributes requestAttributes = new ServletRequestAttributes(request);
+		LOG.error(errorAttributes.getErrorAttributes(requestAttributes, false));
+
         return buildModelAndViewError(HttpStatus.valueOf(response.getStatus()), e);
 	}
 
@@ -72,7 +83,6 @@ public class ErrorController implements org.springframework.boot.autoconfigure.w
 		mav.addObject("message", message);
 		mav.addObject("statusCode", status.value());
 		mav.addObject("statusMessage", status.getReasonPhrase());
-		LOG.error(message, e);
 
 		return mav;
 	}

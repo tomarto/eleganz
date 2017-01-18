@@ -26,6 +26,11 @@
 			})
 			.state('app.users', {
 				url : '/usuarios',
+				resolve: {
+					users: ['usersService', function(usersService) {
+						return usersService.getUsers();
+					}]
+				},
 				views: {
 					'content@': {
 						templateUrl : '/admin/partials/users.html',

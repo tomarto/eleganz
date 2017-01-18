@@ -12,8 +12,10 @@
 			'ngMessages',
 			'ngAnimate',
 			'ngTouch',
+			'ngSanitize',
 			'ui.bootstrap',
+			'core',
 			'header',
-			'user'
+			'users'
 		]);
 })();
