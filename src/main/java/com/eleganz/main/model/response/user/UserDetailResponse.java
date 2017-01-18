@@ -1,5 +1,7 @@
 package com.eleganz.main.model.response.user;
 
+import java.util.Set;
+
 import com.eleganz.main.model.user.UserDetailBase;
 
 /**
@@ -12,10 +14,8 @@ import com.eleganz.main.model.user.UserDetailBase;
 public class UserDetailResponse extends UserDetailBase {
 
 	private UserResponse user;
-	private PersonResponse bride;
-	private PersonResponse groom;
-	private EventResponse churchEvent;
-	private EventResponse weddingEvent;
+	private Set<PersonResponse> people;
+	private Set<EventResponse> events;
 
 	/**
 	 * <p>
@@ -53,93 +53,47 @@ public class UserDetailResponse extends UserDetailBase {
 
 	/**
 	 * <p>
-	 * Getter for the field <code>bride</code>.
+	 * Getter for the field <code>people</code>.
 	 * </p>
 	 * 
-	 * @return the bride
+	 * @return the people
 	 */
-	public PersonResponse getBride() {
-		return bride;
+	public Set<PersonResponse> getPeople() {
+		return people;
 	}
 
 	/**
 	 * <p>
-	 * Setter for the field <code>bride</code>.
+	 * Setter for the field <code>people</code>.
 	 * </p>
 	 * 
-	 * @param bride
-	 *            the bride to set
+	 * @param people
+	 *            the people to set
 	 */
-	public void setBride(PersonResponse bride) {
-		this.bride = bride;
+	public void setPeople(Set<PersonResponse> people) {
+		this.people = people;
 	}
 
 	/**
 	 * <p>
-	 * Getter for the field <code>groom</code>.
+	 * Getter for the field <code>events</code>.
 	 * </p>
 	 * 
-	 * @return the groom
+	 * @return the events
 	 */
-	public PersonResponse getGroom() {
-		return groom;
+	public Set<EventResponse> getEvents() {
+		return events;
 	}
 
 	/**
 	 * <p>
-	 * Setter for the field <code>groom</code>.
+	 * Setter for the field <code>events</code>.
 	 * </p>
 	 * 
-	 * @param groom
-	 *            the groom to set
+	 * @param events
+	 *            the events to set
 	 */
-	public void setGroom(PersonResponse groom) {
-		this.groom = groom;
-	}
-
-	/**
-	 * <p>
-	 * Getter for the field <code>churchEvent</code>.
-	 * </p>
-	 * 
-	 * @return the churchEvent
-	 */
-	public EventResponse getChurchEvent() {
-		return churchEvent;
-	}
-
-	/**
-	 * <p>
-	 * Setter for the field <code>churchEvent</code>.
-	 * </p>
-	 * 
-	 * @param churchEvent
-	 *            the churchEvent to set
-	 */
-	public void setChurchEvent(EventResponse churchEvent) {
-		this.churchEvent = churchEvent;
-	}
-
-	/**
-	 * <p>
-	 * Getter for the field <code>weddingEvent</code>.
-	 * </p>
-	 * 
-	 * @return the weddingEvent
-	 */
-	public EventResponse getWeddingEvent() {
-		return weddingEvent;
-	}
-
-	/**
-	 * <p>
-	 * Setter for the field <code>weddingEvent</code>.
-	 * </p>
-	 * 
-	 * @param weddingEvent
-	 *            the weddingEvent to set
-	 */
-	public void setWeddingEvent(EventResponse weddingEvent) {
-		this.weddingEvent = weddingEvent;
+	public void setEvents(Set<EventResponse> events) {
+		this.events = events;
 	}
 }

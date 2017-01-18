@@ -2,7 +2,7 @@ package com.eleganz.main.model.request.user;
 
 import java.io.Serializable;
 
-import com.eleganz.main.model.user.EventType;
+import com.eleganz.main.model.user.UserType;
 
 /**
  * <p>
@@ -16,7 +16,7 @@ public class UserDetailRequest implements Serializable {
 	/** Constant <code>serialVersionUID=4171766686461276203L</code> */
 	private static final long serialVersionUID = 4171766686461276203L;
 
-	private EventType type;
+	private UserType type;
 
 	/**
 	 * <p>
@@ -25,7 +25,7 @@ public class UserDetailRequest implements Serializable {
 	 * 
 	 * @return the type
 	 */
-	public EventType getType() {
+	public UserType getType() {
 		return type;
 	}
 
@@ -37,7 +37,7 @@ public class UserDetailRequest implements Serializable {
 	 * @param type
 	 *            the type to set
 	 */
-	public void setType(EventType type) {
+	public void setType(UserType type) {
 		this.type = type;
 	}
 }

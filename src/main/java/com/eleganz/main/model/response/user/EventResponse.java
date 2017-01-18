@@ -11,54 +11,41 @@ import com.eleganz.main.model.user.EventBase;
  */
 public class EventResponse extends EventBase {
 
-	private UserDetailResponse churchUserDetails;
-	private UserDetailResponse weddingUserDetails;
+	private UserDetailResponse userDetail;
 	private LocationResponse location;
 
 	/**
 	 * <p>
-	 * Getter for the field <code>churchUserDetails</code>.
+	 * Getter for the field <code>type</code>.
 	 * </p>
 	 * 
-	 * @return the churchUserDetails
+	 * @return the type
 	 */
-	public UserDetailResponse getChurchUserDetails() {
-		return churchUserDetails;
+	public String getType() {
+		return super.getTypeEnum() == null ? null : super.getTypeEnum().getValue();
 	}
 
 	/**
 	 * <p>
-	 * Setter for the field <code>churchUserDetails</code>.
+	 * Getter for the field <code>userDetail</code>.
 	 * </p>
 	 * 
-	 * @param churchUserDetails
-	 *            the churchUserDetails to set
+	 * @return the userDetail
 	 */
-	public void setChurchUserDetails(UserDetailResponse churchUserDetails) {
-		this.churchUserDetails = churchUserDetails;
+	public UserDetailResponse getUserDetail() {
+		return userDetail;
 	}
 
 	/**
 	 * <p>
-	 * Getter for the field <code>weddingUserDetails</code>.
+	 * Setter for the field <code>userDetail</code>.
 	 * </p>
 	 * 
-	 * @return the weddingUserDetails
+	 * @param userDetail
+	 *            the userDetail to set
 	 */
-	public UserDetailResponse getWeddingUserDetails() {
-		return weddingUserDetails;
-	}
-
-	/**
-	 * <p>
-	 * Setter for the field <code>weddingUserDetails</code>.
-	 * </p>
-	 * 
-	 * @param weddingUserDetails
-	 *            the weddingUserDetails to set
-	 */
-	public void setWeddingUserDetails(UserDetailResponse weddingUserDetails) {
-		this.weddingUserDetails = weddingUserDetails;
+	public void setUserDetail(UserDetailResponse userDetail) {
+		this.userDetail = userDetail;
 	}
 
 	/**

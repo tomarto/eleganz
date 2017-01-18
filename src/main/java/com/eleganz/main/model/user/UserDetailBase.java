@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 public class UserDetailBase {
 
-	private EventType type;
+	private UserType type;
 
 	/**
 	 * <p>
@@ -22,7 +22,7 @@ public class UserDetailBase {
 	 * @return the type
 	 */
 	@JsonIgnore
-	public EventType getTypeEnum() {
+	public UserType getTypeEnum() {
 		return type;
 	}
 
@@ -34,7 +34,7 @@ public class UserDetailBase {
 	 * @param type
 	 *            the type to set
 	 */
-	public void setType(EventType type) {
+	public void setType(UserType type) {
 		this.type = type;
 	}
 }

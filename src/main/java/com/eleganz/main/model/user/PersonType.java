@@ -2,26 +2,26 @@ package com.eleganz.main.model.user;
 
 /**
  * <p>
- * LocationType enum. Domain linked to database.
+ * PersonType enum. Domain linked to database.
  * </p>
  * 
  * @author Omar Ortiz.
  */
-public enum LocationType {
+public enum PersonType {
 
-	CHURCH("Iglesia"), EVENT_HALL("Salon de Eventos");
+	BRIDE("Novia"), GROOM("Novio");
 
 	private String value;
 
 	/**
 	 * <p>
-	 * Constructor for LocationType.
+	 * Constructor for PersonType.
 	 * </p>
 	 * 
 	 * @param value
 	 *            a {@link java.lang.String} object.
 	 */
-	LocationType(String value) {
+	PersonType(String value) {
 		this.value = value;
 	}
 

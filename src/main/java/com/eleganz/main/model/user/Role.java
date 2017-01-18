@@ -8,13 +8,14 @@ package com.eleganz.main.model.user;
  * @author Omar Ortiz.
  */
 public enum Role {
+
 	ROLE_ADMIN("Admin"), ROLE_USER("User");
 
 	private String value;
 
 	/**
 	 * <p>
-	 * Constructor for EventType.
+	 * Constructor for Role.
 	 * </p>
 	 * 
 	 * @param value

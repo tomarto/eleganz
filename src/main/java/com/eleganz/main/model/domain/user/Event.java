@@ -5,15 +5,17 @@ import java.sql.Time;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.eleganz.main.model.user.EventBase;
+import com.eleganz.main.model.user.EventType;
 
 /**
  * <p>
@@ -27,8 +29,7 @@ import com.eleganz.main.model.user.EventBase;
 public class Event extends EventBase {
 
 	private Long id;
-	private UserDetail churchUserDetails;
-	private UserDetail weddingUserDetails;
+	private UserDetail userDetail;
 	private Location location;
 
 	/**
@@ -82,50 +83,40 @@ public class Event extends EventBase {
 
 	/**
 	 * <p>
-	 * Getter for the field <code>churchUserDetails</code>.
+	 * Getter for the field <code>type</code>.
 	 * </p>
 	 * 
-	 * @return the churchUserDetails
+	 * @return the type
 	 */
-	@OneToOne(mappedBy = "churchEvent")
-	public UserDetail getChurchUserDetails() {
-		return churchUserDetails;
+	@Column(nullable = false)
+	@Enumerated(EnumType.STRING)
+	public EventType getType() {
+		return super.getTypeEnum();
 	}
 
 	/**
 	 * <p>
-	 * Setter for the field <code>churchUserDetails</code>.
+	 * Getter for the field <code>userDetail</code>.
 	 * </p>
 	 * 
-	 * @param churchUserDetails
-	 *            the churchUserDetails to set
+	 * @return the userDetail
 	 */
-	public void setChurchUserDetails(UserDetail churchUserDetails) {
-		this.churchUserDetails = churchUserDetails;
+	@ManyToOne
+	@JoinColumn(name = "user_detail_id")
+	public UserDetail getUserDetail() {
+		return userDetail;
 	}
 
 	/**
 	 * <p>
-	 * Getter for the field <code>weddingUserDetails</code>.
+	 * Setter for the field <code>userDetail</code>.
 	 * </p>
 	 * 
-	 * @return the weddingUserDetails
+	 * @param userDetail
+	 *            the userDetail to set
 	 */
-	@OneToOne(mappedBy = "weddingEvent")
-	public UserDetail getWeddingUserDetails() {
-		return weddingUserDetails;
-	}
-
-	/**
-	 * <p>
-	 * Setter for the field <code>weddingUserDetails</code>.
-	 * </p>
-	 * 
-	 * @param weddingUserDetails
-	 *            the weddingUserDetails to set
-	 */
-	public void setWeddingUserDetails(UserDetail weddingUserDetails) {
-		this.weddingUserDetails = weddingUserDetails;
+	public void setUserDetail(UserDetail userDetail) {
+		this.userDetail = userDetail;
 	}
 
 	/**

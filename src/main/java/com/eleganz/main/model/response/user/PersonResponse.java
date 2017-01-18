@@ -10,5 +10,15 @@ import com.eleganz.main.model.user.PersonBase;
  * @author Omar Ortiz.
  */
 public class PersonResponse extends PersonBase {
-	
+
+	/**
+	 * <p>
+	 * Getter for the field <code>type</code>.
+	 * </p>
+	 * 
+	 * @return the type
+	 */
+	public String getType() {
+		return super.getTypeEnum() == null ? null : super.getTypeEnum().getValue();
+	}
 }

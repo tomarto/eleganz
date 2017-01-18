@@ -1,5 +1,8 @@
 package com.eleganz.main.mapper.response.user;
 
+import java.util.Set;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Component;
 
 import com.eleganz.main.mapper.response.ResponseMapper;
@@ -35,47 +38,36 @@ public class UserResponseMapper implements ResponseMapper<User, UserResponse> {
 
 		final UserDetailResponse userDetail = new UserDetailResponse();
 		userDetail.setType(from.getUserDetail().getType());
+
+		final Set<PersonResponse> people = from.getUserDetail().getPeople().stream().map(p -> {
+			final PersonResponse person = new PersonResponse();
+			person.setFirstName(p.getFirstName());
+			person.setLastName(p.getLastName());
+			person.setType(p.getType());
+
+			return person;
+		}).collect(Collectors.toSet());
+		userDetail.setPeople(people);
+
+		final Set<EventResponse> events = from.getUserDetail().getEvents().stream().map(e -> {
+			final EventResponse event = new EventResponse();
+			event.setDate(e.getDate());
+			event.setTime(e.getTime());
+			event.setType(e.getType());
+			LocationResponse location = new LocationResponse();
+			location.setName(e.getLocation().getName());
+			location.setAddress(e.getLocation().getAddress());
+			location.setCity(e.getLocation().getCity());
+			location.setState(e.getLocation().getState());
+			location.setCountry(e.getLocation().getCountry());
+			location.setPostalCode(e.getLocation().getPostalCode());
+			location.setType(e.getLocation().getType());
+			event.setLocation(location);
+
+			return event;
+		}).collect(Collectors.toSet());
+		userDetail.setEvents(events);
 		result.setUserDetail(userDetail);
-
-		final PersonResponse bride = new PersonResponse();
-		bride.setFirstName(from.getUserDetail().getBride().getFirstName());
-		bride.setLastName(from.getUserDetail().getBride().getLastName());
-		userDetail.setBride(bride);
-
-		final PersonResponse groom = new PersonResponse();
-		groom.setFirstName(from.getUserDetail().getGroom().getFirstName());
-		groom.setLastName(from.getUserDetail().getGroom().getLastName());
-		userDetail.setGroom(groom);
-
-		final EventResponse churchEvent = new EventResponse();
-		churchEvent.setDate(from.getUserDetail().getChurchEvent().getDate());
-		churchEvent.setTime(from.getUserDetail().getChurchEvent().getTime());
-		userDetail.setChurchEvent(churchEvent);
-
-		final LocationResponse churchLocation = new LocationResponse();
-		churchLocation.setName(from.getUserDetail().getChurchEvent().getLocation().getName());
-		churchLocation.setAddress(from.getUserDetail().getChurchEvent().getLocation().getAddress());
-		churchLocation.setCity(from.getUserDetail().getChurchEvent().getLocation().getCity());
-		churchLocation.setState(from.getUserDetail().getChurchEvent().getLocation().getState());
-		churchLocation.setCountry(from.getUserDetail().getChurchEvent().getLocation().getCountry());
-		churchLocation.setPostalCode(from.getUserDetail().getChurchEvent().getLocation().getPostalCode());
-		churchLocation.setType(from.getUserDetail().getChurchEvent().getLocation().getType());
-		churchEvent.setLocation(churchLocation);
-
-		final EventResponse weddingEvent = new EventResponse();
-		weddingEvent.setDate(from.getUserDetail().getWeddingEvent().getDate());
-		weddingEvent.setTime(from.getUserDetail().getWeddingEvent().getTime());
-		userDetail.setWeddingEvent(weddingEvent);
-
-		final LocationResponse weddingLocation = new LocationResponse();
-		weddingLocation.setName(from.getUserDetail().getWeddingEvent().getLocation().getName());
-		weddingLocation.setAddress(from.getUserDetail().getWeddingEvent().getLocation().getAddress());
-		weddingLocation.setCity(from.getUserDetail().getWeddingEvent().getLocation().getCity());
-		weddingLocation.setState(from.getUserDetail().getWeddingEvent().getLocation().getState());
-		weddingLocation.setCountry(from.getUserDetail().getWeddingEvent().getLocation().getCountry());
-		weddingLocation.setPostalCode(from.getUserDetail().getWeddingEvent().getLocation().getPostalCode());
-		weddingLocation.setType(from.getUserDetail().getWeddingEvent().getLocation().getType());
-		weddingEvent.setLocation(weddingLocation);
 
 		return result;
 	}

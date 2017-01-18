@@ -2,12 +2,17 @@ package com.eleganz.main.model.domain.user;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.eleganz.main.model.user.PersonBase;
+import com.eleganz.main.model.user.PersonType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
@@ -22,6 +27,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Person extends PersonBase {
 
 	private Long id;
+	private UserDetail userDetail;
 
 	/**
 	 * <p>
@@ -71,5 +77,43 @@ public class Person extends PersonBase {
 	@Column(name = "last_name", nullable = false)
 	public String getLastName() {
 		return super.getLastName();
+	}
+
+	/**
+	 * <p>
+	 * Getter for the field <code>type</code>.
+	 * </p>
+	 * 
+	 * @return the type
+	 */
+	@Column(nullable = false)
+	@Enumerated(EnumType.STRING)
+	public PersonType getType() {
+		return super.getTypeEnum();
+	}
+
+	/**
+	 * <p>
+	 * Getter for the field <code>userDetail</code>.
+	 * </p>
+	 * 
+	 * @return the userDetail
+	 */
+	@ManyToOne
+	@JoinColumn(name = "user_detail_id")
+	public UserDetail getUserDetail() {
+		return userDetail;
+	}
+
+	/**
+	 * <p>
+	 * Setter for the field <code>userDetail</code>.
+	 * </p>
+	 * 
+	 * @param userDetail
+	 *            the userDetail to set
+	 */
+	public void setUserDetail(UserDetail userDetail) {
+		this.userDetail = userDetail;
 	}
 }

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 
 import com.eleganz.main.mapper.response.ResponseMapper;
 import com.eleganz.main.model.domain.user.Location;
-import com.eleganz.main.model.domain.user.UserDetail;
 import com.eleganz.main.model.response.user.EventResponse;
 import com.eleganz.main.model.response.user.LocationResponse;
 import com.eleganz.main.model.response.user.PersonResponse;
@@ -42,52 +41,35 @@ public class LocationResponseMapper implements ResponseMapper<Location, Location
 		result.setType(from.getType());
 
 		final Set<EventResponse> events = from.getEvents().stream().map(e -> {
-			EventResponse event = new EventResponse();
+			final EventResponse event = new EventResponse();
 			event.setDate(e.getDate());
 			event.setTime(e.getTime());
-			switch(from.getType()) {
-				case CHURCH:
-					event.setChurchUserDetails(buildWeddingRelatedUserDetailsResponse(e.getChurchUserDetails()));
-					break;
-				case WEDDING:
-					event.setWeddingUserDetails(buildWeddingRelatedUserDetailsResponse(e.getWeddingUserDetails()));
-					break;
-			}
+			event.setType(e.getType());
+
+			final UserDetailResponse userDetail = new UserDetailResponse();
+			userDetail.setType(e.getUserDetail().getType());
+
+			final Set<PersonResponse> people = e.getUserDetail().getPeople().stream().map(p -> {
+				final PersonResponse person = new PersonResponse();
+				person.setFirstName(p.getFirstName());
+				person.setLastName(p.getLastName());
+				person.setType(p.getType());
+
+				return person;
+			}).collect(Collectors.toSet());
+			userDetail.setPeople(people);
+
+			final UserResponse user = new UserResponse();
+			user.setId(e.getUserDetail().getUser().getId());
+			user.setUsername(e.getUserDetail().getUser().getUsername());
+			user.setEmail(e.getUserDetail().getUser().getEmail());
+			user.setRole(e.getUserDetail().getUser().getRole());
+			userDetail.setUser(user);
+			event.setUserDetail(userDetail);
 
 			return event;
 		}).collect(Collectors.toSet());
 		result.setEvents(events);
-
-		return result;
-	}
-
-	/**
-	 * <p>
-	 * Build a wedding related {@link com.eleganz.main.model.response.user.UserDetailResponse} based on 
-	 * {@link com.eleganz.main.model.domain.user.UserDetail}.
-	 * </p>
-	 * 
-	 * @param userDetail
-	 *            {@link com.eleganz.main.model.domain.user.UserDetail}
-	 * @return a {@link com.eleganz.main.model.response.user.UserDetailResponse} object.
-	 */
-	private UserDetailResponse buildWeddingRelatedUserDetailsResponse(UserDetail userDetail) {
-		final UserDetailResponse result = new UserDetailResponse();
-		result.setType(userDetail.getType());
-		final PersonResponse bride = new PersonResponse();
-		bride.setFirstName(userDetail.getBride().getFirstName());
-		bride.setLastName(userDetail.getBride().getLastName());
-		result.setBride(bride);
-		final PersonResponse groom = new PersonResponse();
-		groom.setFirstName(userDetail.getGroom().getFirstName());
-		groom.setLastName(userDetail.getGroom().getLastName());
-		result.setGroom(groom);
-		final UserResponse user = new UserResponse();
-		user.setId(userDetail.getUser().getId());
-		user.setUsername(userDetail.getUser().getUsername());
-		user.setEmail(userDetail.getUser().getEmail());
-		user.setRole(userDetail.getUser().getRole());
-		result.setUser(user);
 
 		return result;
 	}

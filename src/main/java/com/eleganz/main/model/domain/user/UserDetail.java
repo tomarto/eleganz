@@ -1,5 +1,7 @@
 package com.eleganz.main.model.domain.user;
 
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,12 +10,12 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.eleganz.main.model.user.EventType;
 import com.eleganz.main.model.user.UserDetailBase;
+import com.eleganz.main.model.user.UserType;
 
 /**
  * <p>
@@ -28,10 +30,8 @@ public class UserDetail extends UserDetailBase {
 
 	private Long id;
 	private User user;
-	private Person bride;
-	private Person groom;
-	private Event churchEvent;
-	private Event weddingEvent;
+	private Set<Person> people;
+	private Set<Event> events;
 
 	/**
 	 * <p>
@@ -67,7 +67,7 @@ public class UserDetail extends UserDetailBase {
 	 */
 	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
-	public EventType getType() {
+	public UserType getType() {
 		return super.getTypeEnum();
 	}
 
@@ -97,101 +97,49 @@ public class UserDetail extends UserDetailBase {
 
 	/**
 	 * <p>
-	 * Getter for the field <code>bride</code>.
+	 * Getter for the field <code>people</code>.
 	 * </p>
 	 * 
-	 * @return the bride
+	 * @return the people
 	 */
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "bride_id")
-	public Person getBride() {
-		return bride;
+	@OneToMany(mappedBy = "userDetail", cascade = CascadeType.ALL)
+	public Set<Person> getPeople() {
+		return people;
 	}
 
 	/**
 	 * <p>
-	 * Setter for the field <code>bride</code>.
+	 * Setter for the field <code>people</code>.
 	 * </p>
 	 * 
-	 * @param bride
-	 *            the bride to set
+	 * @param people
+	 *            the people to set
 	 */
-	public void setBride(Person bride) {
-		this.bride = bride;
+	public void setPeople(Set<Person> people) {
+		this.people = people;
 	}
 
 	/**
 	 * <p>
-	 * Getter for the field <code>groom</code>.
+	 * Getter for the field <code>events</code>.
 	 * </p>
 	 * 
-	 * @return the groom
+	 * @return the events
 	 */
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "groom_id")
-	public Person getGroom() {
-		return groom;
+	@OneToMany(mappedBy = "userDetail", cascade = CascadeType.ALL)
+	public Set<Event> getEvents() {
+		return events;
 	}
 
 	/**
 	 * <p>
-	 * Setter for the field <code>groom</code>.
+	 * Setter for the field <code>events</code>.
 	 * </p>
 	 * 
-	 * @param groom
-	 *            the groom to set
+	 * @param events
+	 *            the events to set
 	 */
-	public void setGroom(Person groom) {
-		this.groom = groom;
-	}
-
-	/**
-	 * <p>
-	 * Getter for the field <code>churchEvent</code>.
-	 * </p>
-	 * 
-	 * @return the churchEvent
-	 */
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "church_event_id")
-	public Event getChurchEvent() {
-		return churchEvent;
-	}
-
-	/**
-	 * <p>
-	 * Setter for the field <code>churchEvent</code>.
-	 * </p>
-	 * 
-	 * @param churchEvent
-	 *            the churchEvent to set
-	 */
-	public void setChurchEvent(Event churchEvent) {
-		this.churchEvent = churchEvent;
-	}
-
-	/**
-	 * <p>
-	 * Getter for the field <code>weddingEvent</code>.
-	 * </p>
-	 * 
-	 * @return the weddingEvent
-	 */
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "wedding_event_id")
-	public Event getWeddingEvent() {
-		return weddingEvent;
-	}
-
-	/**
-	 * <p>
-	 * Setter for the field <code>weddingEvent</code>.
-	 * </p>
-	 * 
-	 * @param weddingEvent
-	 *            the weddingEvent to set
-	 */
-	public void setWeddingEvent(Event weddingEvent) {
-		this.weddingEvent = weddingEvent;
+	public void setEvents(Set<Event> events) {
+		this.events = events;
 	}
 }

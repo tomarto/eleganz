@@ -1,5 +1,7 @@
 package com.eleganz.main.model.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * <p>
  * PersonBase class. Abstract class used for {@link com.eleganz.main.model.domain.user.Person}
@@ -12,6 +14,7 @@ public class PersonBase {
 
 	private String firstName;
 	private String lastName;
+	private PersonType type;
 
 	/**
 	 * <p>
@@ -57,5 +60,29 @@ public class PersonBase {
 	 */
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	/**
+	 * <p>
+	 * Getter for the field <code>type</code>.
+	 * </p>
+	 * 
+	 * @return the type
+	 */
+	@JsonIgnore
+	public PersonType getTypeEnum() {
+		return type;
+	}
+
+	/**
+	 * <p>
+	 * Setter for the field <code>type</code>.
+	 * </p>
+	 * 
+	 * @param type
+	 *            the type to set
+	 */
+	public void setType(PersonType type) {
+		this.type = type;
 	}
 }

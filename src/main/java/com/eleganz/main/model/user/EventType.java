@@ -9,7 +9,7 @@ package com.eleganz.main.model.user;
  */
 public enum EventType {
 
-	WEDDING("Wedding");
+	CHURCH("Iglesia"), WEDDING("Boda");
 
 	private String value;
 
