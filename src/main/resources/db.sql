@@ -69,4 +69,5 @@ INSERT INTO Person (first_name, last_name, type, user_detail_id) VALUES ('Juan',
 
 INSERT INTO UserDetail(type) VALUES ('WEDDING');
 
-INSERT INTO User(username, password_hash, role, user_detail_id) VALUES('eleganz-admin', '$2a$10$MRYcUdxwyH7RB1xGmoGIge.oJcf.8YoEmUDN3L/Emf5eg0Vy6Q7ym', 'ROLE_ADMIN', 0);
+INSERT INTO User(username, password_hash, role) VALUES('eleganz-admin', '$2a$10$MRYcUdxwyH7RB1xGmoGIge.oJcf.8YoEmUDN3L/Emf5eg0Vy6Q7ym', 'ROLE_ADMIN');
+INSERT INTO User(username, password_hash, role, user_detail_id) VALUES('maria-juan', '$2a$10$MRYcUdxwyH7RB1xGmoGIge.oJcf.8YoEmUDN3L/Emf5eg0Vy6Q7ym', 'ROLE_USER', 0);

@@ -1,8 +1,17 @@
 @CHARSET "ISO-8859-1";
 
+.black {
+	color: #333;
+}
+
 .users table {
 	background-color: #fff;
 	color: #333;
+}
+
+.users table td.action {
+	vertical-align: middle;
+	text-align: center;
 }
 
 /* Desktop-specific */

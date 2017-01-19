@@ -9,7 +9,7 @@ package com.eleganz.main.model.user;
  */
 public enum Role {
 
-	ROLE_ADMIN("Admin"), ROLE_USER("User");
+	ROLE_ADMIN("Administrador"), ROLE_USER("Usuario");
 
 	private String value;
 

@@ -36,38 +36,45 @@ public class UserResponseMapper implements ResponseMapper<User, UserResponse> {
 		result.setRole(from.getRole());
 		result.setEmail(from.getEmail());
 
-		final UserDetailResponse userDetail = new UserDetailResponse();
-		userDetail.setType(from.getUserDetail().getType());
+		if(from.getUserDetail() != null) {
+			final UserDetailResponse userDetail = new UserDetailResponse();
+			userDetail.setType(from.getUserDetail().getType());
 
-		final Set<PersonResponse> people = from.getUserDetail().getPeople().stream().map(p -> {
-			final PersonResponse person = new PersonResponse();
-			person.setFirstName(p.getFirstName());
-			person.setLastName(p.getLastName());
-			person.setType(p.getType());
+			if(from.getUserDetail().getPeople() != null) {
+				final Set<PersonResponse> people = from.getUserDetail().getPeople().stream().map(p -> {
+					final PersonResponse person = new PersonResponse();
+					person.setFirstName(p.getFirstName());
+					person.setLastName(p.getLastName());
+					person.setType(p.getType());
 
-			return person;
-		}).collect(Collectors.toSet());
-		userDetail.setPeople(people);
+					return person;
+				}).collect(Collectors.toSet());
+				userDetail.setPeople(people);
+			}
 
-		final Set<EventResponse> events = from.getUserDetail().getEvents().stream().map(e -> {
-			final EventResponse event = new EventResponse();
-			event.setDate(e.getDate());
-			event.setTime(e.getTime());
-			event.setType(e.getType());
-			LocationResponse location = new LocationResponse();
-			location.setName(e.getLocation().getName());
-			location.setAddress(e.getLocation().getAddress());
-			location.setCity(e.getLocation().getCity());
-			location.setState(e.getLocation().getState());
-			location.setCountry(e.getLocation().getCountry());
-			location.setPostalCode(e.getLocation().getPostalCode());
-			location.setType(e.getLocation().getType());
-			event.setLocation(location);
+			if(from.getUserDetail().getEvents() != null) {
+				final Set<EventResponse> events = from.getUserDetail().getEvents().stream().map(e -> {
+					final EventResponse event = new EventResponse();
+					event.setDate(e.getDate());
+					event.setTime(e.getTime());
+					event.setType(e.getType());
+					LocationResponse location = new LocationResponse();
+					location.setName(e.getLocation().getName());
+					location.setAddress(e.getLocation().getAddress());
+					location.setCity(e.getLocation().getCity());
+					location.setState(e.getLocation().getState());
+					location.setCountry(e.getLocation().getCountry());
+					location.setPostalCode(e.getLocation().getPostalCode());
+					location.setType(e.getLocation().getType());
+					event.setLocation(location);
 
-			return event;
-		}).collect(Collectors.toSet());
-		userDetail.setEvents(events);
-		result.setUserDetail(userDetail);
+					return event;
+				}).collect(Collectors.toSet());
+				userDetail.setEvents(events);
+			}
+
+			result.setUserDetail(userDetail);
+		}
 
 		return result;
 	}

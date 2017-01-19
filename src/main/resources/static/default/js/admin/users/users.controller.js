@@ -10,12 +10,30 @@
 		.module('users')
 		.controller('UsersController', UsersController);
 
-	UsersController.$inject = ['users'];
+	UsersController.$inject = ['$uibModal', 'users'];
 
-	function UsersController(users) {
+	function UsersController($uibModal, users) {
 		var vm = this;
 
 		vm.users = users;
-		console.log(users);
+
+		vm.editUser = editUser;
+
+		function editUser(user) {
+			var modalInsance = $uibModal.open({
+				templateUrl: '/admin/partials/edit-user-modal.html',
+				controller: 'EditUserController',
+				controllerAs: 'euc',
+				resolve: {
+					user: function() {
+						return user;
+					}
+				}
+			});
+
+			modalInsance.result.then(function(updatedUser) {
+				console.log(updatedUser);
+			});
+		}
 	}
 })();

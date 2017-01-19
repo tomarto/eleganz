@@ -2,57 +2,78 @@
 	<div class="page-header">
 		<h2>Usuarios</h2>
 	</div>
-	<div class="col-md-12">
-		<table class="table table-bordered table-striped">
-			<thead>
-				<tr>
-					<th>Id</th>
-					<th>Usuario</th>
-					<th>Tipo De Usuario</th>
-					<th>Tipo de Evento</th>
-					<th>Personas</th>
-					<th>Eventos</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr data-ng-repeat="user in uvm.users">
-					<td data-ng-bind="user.id"></td>
-					<td data-ng-bind="user.username"></td>
-					<td data-ng-bind="user.type"></td>
-					<td data-ng-bind="user.userDetail.type"></td>
-					<td>
-						<div data-ng-repeat="person in user.userDetail.people">
-							<div>
-								<strong>Nombre: </strong>
-								<span data-ng-bind="person.firstName"></span> 
-								<span data-ng-bind="person.lastName"></span>
+	<div class="col-xs-12">
+		<div class="table-responsive">
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Usuario</th>
+						<th>Tipo De Usuario</th>
+						<th>Tipo de Evento</th>
+						<th>Personas</th>
+						<th>Eventos</th>
+						<th>Editar</th>
+						<th>Eliminar</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr data-ng-repeat="user in uvm.users">
+						<td data-ng-bind="user.id"></td>
+						<td data-ng-bind="user.username"></td>
+						<td data-ng-bind="user.type"></td>
+						<td data-ng-bind="user.userDetail.type"></td>
+						<td>
+							<div data-ng-repeat="person in user.userDetail.people">
+								<div>
+									<strong>Nombre: </strong>
+									<span data-ng-bind="person.firstName"></span> 
+									<span data-ng-bind="person.lastName"></span>
+								</div>
+								<div>
+									<strong>Tipo: </strong>
+									<span data-ng-bind="person.type"></span>
+								</div>
+								<div class="horizontal-line" data-ng-if="!$last"></div>
 							</div>
-							<div>
-								<strong>Tipo: </strong>
-								<span data-ng-bind="person.type"></span>
+						</td>
+						<td>
+							<div data-ng-repeat="event in user.userDetail.events">
+								<div>
+									<strong>Tipo: </strong>
+									<span data-ng-bind="event.type"></span>
+								</div>
+								<div>
+									<strong>Fecha: </strong>
+									<span data-ng-bind="event.date | date: 'dd/MM/yyyy'"></span>
+									&nbsp;
+									<span data-ng-bind="event.time"></span>
+								</div>
+								<div>
+									<strong>Lugar: </strong>
+									<span data-ng-bind-html="event.location.name"></span>
+								</div>
+								<div class="horizontal-line" data-ng-if="!$last"></div>
 							</div>
-						</div>
-					</td>
-					<td>
-						<div data-ng-repeat="event in user.userDetail.events">
-							<div>
-								<strong>Tipo: </strong>
-								<span data-ng-bind="event.type"></span>
-							</div>
-							<div>
-								<strong>Fecha: </strong>
-								<span data-ng-bind="event.date"></span>
-								&nbsp;
-								<span data-ng-bind="event.time"></span>
-							</div>
-							<div>
-								<strong>Lugar: </strong>
-								<span data-ng-bind-html="event.location.name"></span>
-							</div>
-						</div>
-					</td>
-				</tr>
-			</tbody>
-		</table>
+						</td>
+						<td class="action">
+							<p data-toggle="tooltip" title="Editar">
+								<button class="btn btn-primary btn-xs" data-title="Edit"
+										data-ng-click="uvm.editUser(user)">
+									<span class="glyphicon glyphicon-pencil"></span>
+								</button>
+							</p>
+						</td>
+						<td class="action">
+							<p data-toggle="tooltip" title="Eliminar">
+								<button class="btn btn-danger btn-xs" data-title="Edit">
+									<span class="glyphicon glyphicon-trash"></span>
+								</button>
+							</p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </div>

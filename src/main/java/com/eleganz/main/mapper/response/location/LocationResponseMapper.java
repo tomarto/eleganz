@@ -40,36 +40,45 @@ public class LocationResponseMapper implements ResponseMapper<Location, Location
 		result.setPostalCode(from.getPostalCode());
 		result.setType(from.getType());
 
-		final Set<EventResponse> events = from.getEvents().stream().map(e -> {
-			final EventResponse event = new EventResponse();
-			event.setDate(e.getDate());
-			event.setTime(e.getTime());
-			event.setType(e.getType());
+		if(from.getEvents() != null) {
+			final Set<EventResponse> events = from.getEvents().stream().map(e -> {
+				final EventResponse event = new EventResponse();
+				event.setDate(e.getDate());
+				event.setTime(e.getTime());
+				event.setType(e.getType());
 
-			final UserDetailResponse userDetail = new UserDetailResponse();
-			userDetail.setType(e.getUserDetail().getType());
+				if(e.getUserDetail() != null) {
+					final UserDetailResponse userDetail = new UserDetailResponse();
+					userDetail.setType(e.getUserDetail().getType());
 
-			final Set<PersonResponse> people = e.getUserDetail().getPeople().stream().map(p -> {
-				final PersonResponse person = new PersonResponse();
-				person.setFirstName(p.getFirstName());
-				person.setLastName(p.getLastName());
-				person.setType(p.getType());
+					if(e.getUserDetail().getPeople() != null) {
+						final Set<PersonResponse> people = e.getUserDetail().getPeople().stream().map(p -> {
+							final PersonResponse person = new PersonResponse();
+							person.setFirstName(p.getFirstName());
+							person.setLastName(p.getLastName());
+							person.setType(p.getType());
 
-				return person;
+							return person;
+						}).collect(Collectors.toSet());
+						userDetail.setPeople(people);
+					}
+
+					if(e.getUserDetail().getUser() != null) {
+						final UserResponse user = new UserResponse();
+						user.setId(e.getUserDetail().getUser().getId());
+						user.setUsername(e.getUserDetail().getUser().getUsername());
+						user.setEmail(e.getUserDetail().getUser().getEmail());
+						user.setRole(e.getUserDetail().getUser().getRole());
+						userDetail.setUser(user);
+					}
+
+					event.setUserDetail(userDetail);
+				}
+
+				return event;
 			}).collect(Collectors.toSet());
-			userDetail.setPeople(people);
-
-			final UserResponse user = new UserResponse();
-			user.setId(e.getUserDetail().getUser().getId());
-			user.setUsername(e.getUserDetail().getUser().getUsername());
-			user.setEmail(e.getUserDetail().getUser().getEmail());
-			user.setRole(e.getUserDetail().getUser().getRole());
-			userDetail.setUser(user);
-			event.setUserDetail(userDetail);
-
-			return event;
-		}).collect(Collectors.toSet());
-		result.setEvents(events);
+			result.setEvents(events);
+		}
 
 		return result;
 	}

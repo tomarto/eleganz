@@ -91,7 +91,8 @@
 
 				"admin/users/users.module.js",
 				"admin/users/users.service.js",
-				"admin/users/users.controller.js"
+				"admin/users/users.controller.js",
+				"admin/users/edit-user.controller.js"
 			]
 		}
 	]
