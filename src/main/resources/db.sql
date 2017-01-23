@@ -51,7 +51,7 @@ CREATE TABLE User (
 	username VARCHAR(50) UNIQUE NOT NULL,
 	password_hash VARCHAR(255) NOT NULL,
 	role VARCHAR(10) NOT NULL,
-	email VARCHAR(254),
+	email VARCHAR(254) NOT NULL,
 	user_detail_id INTEGER
 );
 
@@ -69,5 +69,5 @@ INSERT INTO Person (first_name, last_name, type, user_detail_id) VALUES ('Juan',
 
 INSERT INTO UserDetail(type) VALUES ('WEDDING');
 
-INSERT INTO User(username, password_hash, role) VALUES('eleganz-admin', '$2a$10$MRYcUdxwyH7RB1xGmoGIge.oJcf.8YoEmUDN3L/Emf5eg0Vy6Q7ym', 'ROLE_ADMIN');
-INSERT INTO User(username, password_hash, role, user_detail_id) VALUES('maria-juan', '$2a$10$MRYcUdxwyH7RB1xGmoGIge.oJcf.8YoEmUDN3L/Emf5eg0Vy6Q7ym', 'ROLE_USER', 0);
+INSERT INTO User(username, email, password_hash, role) VALUES('eleganz-admin', 'eleganzgrupo@gmail.com', '$2a$10$MRYcUdxwyH7RB1xGmoGIge.oJcf.8YoEmUDN3L/Emf5eg0Vy6Q7ym', 'ROLE_ADMIN');
+INSERT INTO User(username, email, password_hash, role, user_detail_id) VALUES('maria-juan', 'maria-juan@gmail.com', '$2a$10$MRYcUdxwyH7RB1xGmoGIge.oJcf.8YoEmUDN3L/Emf5eg0Vy6Q7ym', 'ROLE_USER', 0);

@@ -11,27 +11,27 @@ import com.eleganz.main.validator.RequestValidator;
 
 /**
  * <p>
- * UserRequestValidator class.
+ * UserCreateRequestValidator class.
  * Validator to validate {@link com.eleganz.main.model.request.user.UserRequest}.
  * </p>
  * 
  * @author Omar Ortiz.
  */
-@Component("userCreateRequestValidator")
-public class UserRequestValidator extends RequestValidator {
+@Component
+public class UserCreateRequestValidator extends RequestValidator {
 
 	private final UserService userService;
 
 	/**
 	 * <p>
-	 * Constructor for UserRequestValidator.
+	 * Constructor for UserCreateRequestValidator.
 	 * </p>
 	 * 
 	 * @param userService
 	 *            a {@link com.eleganz.main.service.user.UserService} object.
 	 */
 	@Autowired
-	public UserRequestValidator(UserService userService) {
+	public UserCreateRequestValidator(UserService userService) {
 		this.userService = userService;
 	}
 

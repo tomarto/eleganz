@@ -9,9 +9,11 @@ import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.eleganz.main.exception.NotFoundException;
 import com.eleganz.main.mapper.response.ResponseMapper;
 import com.eleganz.main.model.domain.user.User;
 import com.eleganz.main.model.request.user.UserRequest;
+import com.eleganz.main.model.request.user.UserUpdateRequest;
 import com.eleganz.main.model.response.user.UserResponse;
 import com.eleganz.main.repository.user.UserRepository;
 
@@ -72,5 +74,15 @@ public class UserServiceImpl implements UserService {
 		user.setPasswordHash(new BCryptPasswordEncoder().encode(request.getPassword()));
 		user.setRole(request.getRole());
 		return userResponseMapper.convert(userRepository.save(user));
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public void update(Long id, UserUpdateRequest request) {
+		final User user = Optional.ofNullable(userRepository.findOne(id))
+				.orElseThrow(() -> new NotFoundException(
+						String.format("No se encontró al Usuario: %s", request.getUsername())));
+		user.setEmail(request.getEmail());
+		userRepository.save(user);
 	}
 }

@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import com.eleganz.main.model.domain.user.User;
 import com.eleganz.main.model.request.user.UserRequest;
+import com.eleganz.main.model.request.user.UserUpdateRequest;
 import com.eleganz.main.model.response.user.UserResponse;
 
 /**
@@ -58,4 +59,17 @@ public interface UserService {
 	 * @return a {@link com.eleganz.main.model.response.user.UserResponse} object.
 	 */
 	UserResponse create(UserRequest request);
+
+	/**
+	 * <p>
+	 * Updates a {@link com.eleganz.main.model.domain.user.User} from the
+	 * {@link com.eleganz.main.model.request.user.UserUpdateRequest} request.
+	 * </p>
+	 * 
+	 * @param id
+	 *            {@link java.lang.Long}
+	 * @param request
+	 *            {@link com.eleganz.main.model.request.user.UserUpdateRequest}
+	 */
+	void update(Long id, UserUpdateRequest request);
 }

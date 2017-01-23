@@ -17,7 +17,7 @@ import com.eleganz.main.exception.BadRequestException;
  * 
  * @author Omar Ortiz.
  */
-@Component("requestValidator")
+@Component
 public class RequestValidator {
 
 	private static final ValidatorFactory factory = Validation.buildDefaultValidatorFactory();

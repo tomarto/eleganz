@@ -92,5 +92,4 @@ public class ErrorController implements org.springframework.boot.autoconfigure.w
 	public String getErrorPath() {
 		return errorPage;
 	}
-
 }

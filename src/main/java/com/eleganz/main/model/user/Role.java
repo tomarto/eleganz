@@ -1,5 +1,7 @@
 package com.eleganz.main.model.user;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 /**
  * <p>
  * Role enum. Domain linked to database.
@@ -7,6 +9,7 @@ package com.eleganz.main.model.user;
  * 
  * @author Omar Ortiz.
  */
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum Role {
 
 	ROLE_ADMIN("Administrador"), ROLE_USER("Usuario");

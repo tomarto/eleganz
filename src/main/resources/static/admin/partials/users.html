@@ -7,8 +7,8 @@
 			<table class="table table-bordered table-striped">
 				<thead>
 					<tr>
-						<th>Id</th>
 						<th>Usuario</th>
+						<th>Email</th>
 						<th>Tipo De Usuario</th>
 						<th>Tipo de Evento</th>
 						<th>Personas</th>
@@ -19,8 +19,8 @@
 				</thead>
 				<tbody>
 					<tr data-ng-repeat="user in uvm.users">
-						<td data-ng-bind="user.id"></td>
 						<td data-ng-bind="user.username"></td>
+						<td data-ng-bind="user.email"></td>
 						<td data-ng-bind="user.type"></td>
 						<td data-ng-bind="user.userDetail.type"></td>
 						<td>

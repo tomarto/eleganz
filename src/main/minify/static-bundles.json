@@ -41,6 +41,7 @@
 				"vendor/angular/angular-animate.js",
 				"vendor/angular/angular-touch.js",
 				"vendor/angular/angular-sanitize.js",
+				"vendor/underscore/underscore.js",
 				"vendor/bootstrap/bootstrap.js",
 				"vendor/bootstrap/ui-bootstrap-tpls-2.3.1.js",
 				"vendor/toaster/toaster.js"

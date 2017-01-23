@@ -15,7 +15,8 @@
 	function usersService($http, $q, $cacheFactory, pendingRequest) {
 		var userCache = $cacheFactory('user'),
 			factory = {
-				getUsers: getUsers
+				getUsers: getUsers,
+				updateUser: updateUser
 			};
 
 		return factory;
@@ -42,6 +43,24 @@
 			}
 
 			function getUsersFailed(error) {
+				pendingRequest.complete(request);
+				return $q.reject(error.data);
+			}
+		}
+
+		function updateUser(user) {
+			var request = pendingRequest.register();
+
+			return $http.put('api/user/' + user.id, user)
+				.then(updateUserComplete)
+				.catch(updateUserFailed);
+
+			function updateUserComplete(response) {
+				pendingRequest.complete(request);
+				return response.data.result;
+			}
+
+			function updateUserFailed(error) {
 				pendingRequest.complete(request);
 				return $q.reject(error.data);
 			}

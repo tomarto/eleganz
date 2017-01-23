@@ -32,7 +32,7 @@
 			});
 
 			modalInsance.result.then(function(updatedUser) {
-				console.log(updatedUser);
+				_.findWhere(vm.users, {id: updatedUser.id}).email = updatedUser.email;
 			});
 		}
 	}

@@ -1,9 +1,5 @@
 @CHARSET "ISO-8859-1";
 
-.black {
-	color: #333;
-}
-
 .users table {
 	background-color: #fff;
 	color: #333;
@@ -12,6 +8,15 @@
 .users table td.action {
 	vertical-align: middle;
 	text-align: center;
+}
+
+.edit-user {
+	color: #333;
+}
+
+.edit-user .form-group {
+	margin-right: 0px;
+	margin-left: 0px;
 }
 
 /* Desktop-specific */

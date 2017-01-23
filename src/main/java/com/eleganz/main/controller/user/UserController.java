@@ -3,22 +3,26 @@ package com.eleganz.main.controller.user;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 
 import java.util.Collection;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.eleganz.main.exception.ConflictException;
 import com.eleganz.main.exception.NotFoundException;
 import com.eleganz.main.model.request.user.UserRequest;
+import com.eleganz.main.model.request.user.UserUpdateRequest;
 import com.eleganz.main.model.response.Response;
 import com.eleganz.main.model.response.user.UserResponse;
 import com.eleganz.main.service.user.UserService;
@@ -36,6 +40,7 @@ import com.eleganz.main.validator.RequestValidator;
 public class UserController {
 
 	private final UserService userService;
+	private final RequestValidator requestValidator;
 	private final RequestValidator userCreateRequestValidator;
 
 	/**
@@ -45,12 +50,17 @@ public class UserController {
 	 * 
 	 * @param userService
 	 *            a {@link com.eleganz.main.service.user.UserService} object.
+	 * @param requestValidator
+	 *            a {@link com.eleganz.main.validator.RequestValidator} object.
 	 * @param userCreateRequestValidator
 	 *            a {@link com.eleganz.main.validator.RequestValidator} object.
 	 */
 	@Autowired
-	public UserController(UserService userService, RequestValidator userCreateRequestValidator) {
+	public UserController(UserService userService,
+			@Qualifier("requestValidator") RequestValidator requestValidator,
+			@Qualifier("userCreateRequestValidator") RequestValidator userCreateRequestValidator) {
 		this.userService = userService;
+		this.requestValidator = requestValidator;
 		this.userCreateRequestValidator = userCreateRequestValidator;
 	}
 
@@ -95,7 +105,7 @@ public class UserController {
 	 */
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping(value = "/user", method = POST, produces = APPLICATION_JSON_VALUE)
-	public @ResponseBody Response<String> createUser(@Valid UserRequest request) {
+	public @ResponseBody Response<String> createUser(UserRequest request) {
 		userCreateRequestValidator.validate(request);
 
 		try {
@@ -105,5 +115,27 @@ public class UserController {
 		}
 
 		return new Response<>(String.format("El Usuario %s ha sido creado", request.getUsername()));
+	}
+
+	/**
+	 * <p>
+	 * Retrieves a single User based on the id.
+	 * </p>
+	 * 
+	 * @param id
+	 *            a {@link java.lang.Long} object.
+	 * @param request
+	 *            a {@link com.eleganz.main.model.request.user.UserRequest} object.
+	 * @return a {@link com.eleganz.main.model.response.Response<String>} object.
+	 */
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@RequestMapping(value = "/user/{id}", method = PUT, produces = APPLICATION_JSON_VALUE)
+	public @ResponseBody Response<String> updateUser(@PathVariable Long id,
+			@Valid @RequestBody UserUpdateRequest request) {
+		requestValidator.validate(request);
+
+		userService.update(id, request);
+
+		return new Response<>(String.format("El Usuario %s se modificó exitosamente", request.getUsername()));
 	}
 }
