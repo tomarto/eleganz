@@ -16,6 +16,11 @@
 		$stateProvider
 			.state('app', {
 				abstract: true,
+				resolve: {
+					currentUser: ['authenticationService', function(authenticationService) {
+						return authenticationService.getUser();
+					}]
+				},
 				views: {
 					'header': {
 						templateUrl : '/admin/partials/header.html',

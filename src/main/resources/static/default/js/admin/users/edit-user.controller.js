@@ -1,5 +1,5 @@
 /**
- * @ngdoc Edit Controller
+ * @ngdoc Edit User Controller
  * @name EditUserController
  * @desc # Define the ViewModel that will be used along the edit user modal view
  */

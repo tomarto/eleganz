@@ -52,6 +52,7 @@
 			"name": "common.js",
 			"files": [
 				"common/core/core.module.js",
+				"common/core/authentication.service.js",
 				"common/core/form-validation.service.js",
 				"common/core/notifier.service.js",
 				"common/core/pending-request.service.js",
@@ -93,7 +94,8 @@
 				"admin/users/users.module.js",
 				"admin/users/users.service.js",
 				"admin/users/users.controller.js",
-				"admin/users/edit-user.controller.js"
+				"admin/users/edit-user.controller.js",
+				"admin/users/delete-user.controller.js"
 			]
 		}
 	]

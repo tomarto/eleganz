@@ -72,4 +72,14 @@ public interface UserService {
 	 *            {@link com.eleganz.main.model.request.user.UserUpdateRequest}
 	 */
 	void update(Long id, UserUpdateRequest request);
+
+	/**
+	 * <p>
+	 * Deletes a {@link com.eleganz.main.model.domain.user.User}.
+	 * </p>
+	 * 
+	 * @param id
+	 *            {@link java.lang.Long}
+	 */
+	void delete(Long id);
 }

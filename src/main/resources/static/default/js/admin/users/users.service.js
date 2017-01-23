@@ -16,7 +16,8 @@
 		var userCache = $cacheFactory('user'),
 			factory = {
 				getUsers: getUsers,
-				updateUser: updateUser
+				updateUser: updateUser,
+				deleteUser: deleteUser
 			};
 
 		return factory;
@@ -61,6 +62,24 @@
 			}
 
 			function updateUserFailed(error) {
+				pendingRequest.complete(request);
+				return $q.reject(error.data);
+			}
+		}
+
+		function deleteUser(id) {
+			var request = pendingRequest.register();
+
+			return $http.delete('api/user/' + id)
+				.then(deleteUserComplete)
+				.catch(deleteUserFailed);
+
+			function deleteUserComplete(response) {
+				pendingRequest.complete(request);
+				return response.data.result;
+			}
+
+			function deleteUserFailed(error) {
 				pendingRequest.complete(request);
 				return $q.reject(error.data);
 			}

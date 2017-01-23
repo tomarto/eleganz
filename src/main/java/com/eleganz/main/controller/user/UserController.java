@@ -1,6 +1,7 @@
 package com.eleganz.main.controller.user;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import static org.springframework.web.bind.annotation.RequestMethod.PUT;
@@ -137,5 +138,22 @@ public class UserController {
 		userService.update(id, request);
 
 		return new Response<>(String.format("El Usuario %s se modificó exitosamente", request.getUsername()));
+	}
+
+	/**
+	 * <p>
+	 * Deletes a single User based on the id.
+	 * </p>
+	 * 
+	 * @param id
+	 *            a {@link java.lang.Long} object.
+	 * @return a {@link com.eleganz.main.model.response.Response<String>} object.
+	 */
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@RequestMapping(value = "/user/{id}", method = DELETE, produces = APPLICATION_JSON_VALUE)
+	public @ResponseBody Response<String> deleteUser(@PathVariable Long id) {
+		userService.delete(id);
+
+		return new Response<>(String.format("El Usuario se eliminó exitosamente"));
 	}
 }

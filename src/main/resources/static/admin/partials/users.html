@@ -58,15 +58,17 @@
 						</td>
 						<td class="action">
 							<p data-toggle="tooltip" title="Editar">
-								<button class="btn btn-primary btn-xs" data-title="Edit"
+								<button class="btn btn-primary btn-xs" data-title="Editar"
 										data-ng-click="uvm.editUser(user)">
 									<span class="glyphicon glyphicon-pencil"></span>
 								</button>
 							</p>
 						</td>
 						<td class="action">
-							<p data-toggle="tooltip" title="Eliminar">
-								<button class="btn btn-danger btn-xs" data-title="Edit">
+							<p data-toggle="tooltip" title="Eliminar"
+									data-ng-if="uvm.currentUser.username !== user.username">
+								<button class="btn btn-danger btn-xs" data-title="Eliminar"
+										data-ng-click="uvm.deleteUser(user)">
 									<span class="glyphicon glyphicon-trash"></span>
 								</button>
 							</p>

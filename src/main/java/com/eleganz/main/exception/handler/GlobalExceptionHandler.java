@@ -14,6 +14,7 @@ import com.eleganz.main.exception.BadRequestException;
 import com.eleganz.main.exception.ConflictException;
 import com.eleganz.main.exception.NotFoundException;
 import com.eleganz.main.exception.ServerErrorException;
+import com.eleganz.main.exception.UnauthorizedException;
 import com.eleganz.main.model.response.Response;
 
 /**
@@ -98,6 +99,23 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(value = ServerErrorException.class)
 	public @ResponseBody Response<String> handleServerErrorException(ServerErrorException e) {
 		final Response<String> errorResult = new Response<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		LOG.error(errorResult.getErrorMessage(), e);
+		return errorResult;
+	}
+
+	/**
+	 * <p>
+	 * Returns a formatted response with the appropriate response status (401).
+	 * </p>
+	 * 
+	 * @param e
+	 *            {@link com.eleganz.main.exception.ServerErrorException}
+	 * @return a {@link com.eleganz.main.model.response.Response<String>} object.
+	 */
+	@ResponseStatus(HttpStatus.UNAUTHORIZED)
+	@ExceptionHandler(value = UnauthorizedException.class)
+	public @ResponseBody Response<String> handleUnauthorizedException(ServerErrorException e) {
+		final Response<String> errorResult = new Response<>(e.getMessage(), HttpStatus.UNAUTHORIZED);
 		LOG.error(errorResult.getErrorMessage(), e);
 		return errorResult;
 	}
