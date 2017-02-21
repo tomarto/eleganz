@@ -93,7 +93,8 @@ body {
 .navbar li.active > a,
 .navbar ul li a:hover,
 .navbar ul li a:focus,
-.navbar ul li a:active {
+.navbar ul li a:active,
+.navbar ul li ul {
 	color: #fff;
 	background-color: transparent;
 	background-image: none;

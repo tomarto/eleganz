@@ -43,6 +43,21 @@
 						controllerAs: 'uvm'
 					}
 				}
+			})
+			.state('app.createUser', {
+				url : '/crear-usuario',
+				resolve: {
+					locations: ['locationService', function(locationService) {
+						return locationService.getLocations();
+					}]
+				},
+				views: {
+					'content@': {
+						templateUrl : '/admin/partials/create-user.html',
+						controller: 'CreateUserController',
+						controllerAs: 'cuvm'
+					}
+				}
 			});
 
 		$urlRouterProvider.otherwise('usuarios');

@@ -6,15 +6,14 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.eleganz.main.exception.NotFoundException;
 import com.eleganz.main.exception.UnauthorizedException;
 import com.eleganz.main.facade.authentication.AuthenticationFacade;
-import com.eleganz.main.mapper.response.ResponseMapper;
+import com.eleganz.main.mapper.response.Mapper;
 import com.eleganz.main.model.domain.user.User;
-import com.eleganz.main.model.request.user.UserRequest;
+import com.eleganz.main.model.request.user.UserCreateRequest;
 import com.eleganz.main.model.request.user.UserUpdateRequest;
 import com.eleganz.main.model.response.user.UserResponse;
 import com.eleganz.main.repository.user.UserRepository;
@@ -31,7 +30,8 @@ public class UserServiceImpl implements UserService {
 
 	private final AuthenticationFacade authenticationFacade;
 	private final UserRepository userRepository;
-	private final ResponseMapper<User, UserResponse> userResponseMapper;
+	private final Mapper<User, UserResponse> userResponseMapper;
+	private final Mapper<UserCreateRequest, User> userRequestMapper;
 
 	/**
 	 * <p>
@@ -43,14 +43,17 @@ public class UserServiceImpl implements UserService {
 	 * @param userRepository
 	 *            a {@link com.eleganz.main.repository.user.UserRepository} object.
 	 * @param userResponseMapper
-	 *            a {@link com.eleganz.main.mapper.response.ResponseMapper<User, UserResponse>} object.
+	 *            a {@link com.eleganz.main.mapper.response.Mapper<User, UserResponse>} object.
+	 * @param userRequestMapper
+	 *            a {@link com.eleganz.main.mapper.response.Mapper<UserCreateRequest, User>} object.
 	 */
 	@Autowired
     public UserServiceImpl(AuthenticationFacade authenticationFacade, UserRepository userRepository,
-    		ResponseMapper<User, UserResponse> userResponseMapper) {
+    		Mapper<User, UserResponse> userResponseMapper, Mapper<UserCreateRequest, User> userRequestMapper) {
 		this.authenticationFacade = authenticationFacade;
         this.userRepository = userRepository;
         this.userResponseMapper = userResponseMapper;
+        this.userRequestMapper = userRequestMapper;
     }
 
 	/** {@inheritDoc} */
@@ -75,12 +78,11 @@ public class UserServiceImpl implements UserService {
 
 	/** {@inheritDoc} */
 	@Override
-	public UserResponse create(UserRequest request) {
-		final User user = new User();
-		user.setUsername(request.getUsername());
-		user.setPasswordHash(new BCryptPasswordEncoder().encode(request.getPassword()));
-		user.setRole(request.getRole());
-		return userResponseMapper.convert(userRepository.save(user));
+	public User create(UserCreateRequest request) {
+		User newUser = userRequestMapper.convert(request);
+		userRepository.save(newUser);
+
+		return newUser;
 	}
 
 	/** {@inheritDoc} */

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.eleganz.main.facade.authentication.AuthenticationFacade;
-import com.eleganz.main.mapper.response.ResponseMapper;
+import com.eleganz.main.mapper.response.Mapper;
 import com.eleganz.main.model.domain.user.User;
 import com.eleganz.main.model.response.Response;
 import com.eleganz.main.model.response.user.UserResponse;
@@ -27,7 +27,7 @@ import com.eleganz.main.model.response.user.UserResponse;
 public class AuthenticationController {
 
 	private AuthenticationFacade authenticationFacade;
-	private final ResponseMapper<User, UserResponse> userResponseMapper;
+	private final Mapper<User, UserResponse> userResponseMapper;
 
 	/**
 	 * <p>
@@ -37,11 +37,11 @@ public class AuthenticationController {
 	 * @param authenticationFacade
 	 *            a {@link com.eleganz.main.facade.authentication.AuthenticationFacade} object.
 	 * @param userResponseMapper
-	 *            a {@link com.eleganz.main.mapper.response.ResponseMapper<User, UserResponse>} object.
+	 *            a {@link com.eleganz.main.mapper.response.Mapper<User, UserResponse>} object.
 	 */
 	@Autowired
 	public AuthenticationController(AuthenticationFacade authenticationFacade,
-			ResponseMapper<User, UserResponse> userResponseMapper) {
+			Mapper<User, UserResponse> userResponseMapper) {
 		this.authenticationFacade = authenticationFacade;
 		this.userResponseMapper = userResponseMapper;
 	}

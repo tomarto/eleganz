@@ -93,9 +93,11 @@
 
 				"admin/users/users.module.js",
 				"admin/users/users.service.js",
+				"admin/users/location.service.js",
 				"admin/users/users.controller.js",
 				"admin/users/edit-user.controller.js",
-				"admin/users/delete-user.controller.js"
+				"admin/users/delete-user.controller.js",
+				"admin/users/create-user.controller.js"
 			]
 		}
 	]

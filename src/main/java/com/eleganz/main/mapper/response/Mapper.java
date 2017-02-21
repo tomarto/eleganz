@@ -2,12 +2,12 @@ package com.eleganz.main.mapper.response;
 
 /**
  * <p>
- * ResponseMapper interface.  Mapper used to convert from {@link T} to {@link Y}.
+ * Mapper interface.  Mapper used to convert from {@link T} to {@link Y}.
  * </p>
  * 
  * @author Omar Ortiz.
  */
-public interface ResponseMapper<T, Y> {
+public interface Mapper<T, Y> {
 
 	/**
 	 * <p>

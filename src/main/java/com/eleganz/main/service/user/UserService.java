@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.Optional;
 
 import com.eleganz.main.model.domain.user.User;
-import com.eleganz.main.model.request.user.UserRequest;
+import com.eleganz.main.model.request.user.UserCreateRequest;
 import com.eleganz.main.model.request.user.UserUpdateRequest;
 import com.eleganz.main.model.response.user.UserResponse;
 
@@ -51,14 +51,13 @@ public interface UserService {
 	/**
 	 * <p>
 	 * Creates a new {@link com.eleganz.main.model.response.user.UserResponse} from the
-	 * {@link com.eleganz.main.model.request.user.UserRequest} request.
+	 * {@link com.eleganz.main.model.request.user.UserCreateRequest} request.
 	 * </p>
 	 * 
 	 * @param request
-	 *            {@link com.eleganz.main.model.request.user.UserRequest}
-	 * @return a {@link com.eleganz.main.model.response.user.UserResponse} object.
+	 *            {@link com.eleganz.main.model.request.user.UserCreateRequest}
 	 */
-	UserResponse create(UserRequest request);
+	User create(UserCreateRequest request);
 
 	/**
 	 * <p>

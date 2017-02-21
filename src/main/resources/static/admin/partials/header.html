@@ -12,12 +12,27 @@
 		</div>
 		<div class="navbar-collapse collapse navbar-menu">
 			<ul class="nav navbar-nav navbar-right">
-				<li data-ui-sref-active="active">
-					<a data-ui-sref="app.users" class="visible-xs" data-toggle="collapse" data-target=".navbar-menu">USUARIOS</a>
-					<a data-ui-sref="app.users" class="hidden-xs">USUARIOS</a>
+				<li class="dropdown" data-ui-sref-active="active">
+					<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+							aria-expanded="false">
+						USUARIOS <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li data-ui-sref-active="active">
+							<a data-ui-sref="app.users" class="visible-xs" data-toggle="collapse"
+									data-target=".navbar-menu">LISTA</a>
+							<a data-ui-sref="app.users" class="hidden-xs">LISTA</a>
+						</li>
+						<li data-ui-sref-active="active">
+							<a data-ui-sref="app.createUser" class="visible-xs" data-toggle="collapse"
+									data-target=".navbar-menu">CREAR USUARIO</a>
+							<a data-ui-sref="app.createUser" class="hidden-xs">CREAR USUARIO</a>
+						</li>
+					</ul>
 				</li>
 				<li>
-					<a href="logout" class="visible-xs" data-toggle="collapse" data-target=".navbar-menu">CERRAR SESI&#211;N</a>
+					<a href="logout" class="visible-xs" data-toggle="collapse"
+							data-target=".navbar-menu">CERRAR SESI&#211;N</a>
 					<a href="logout" class="hidden-xs">CERRAR SESI&#211;N</a>
 				</li>
 			</ul>

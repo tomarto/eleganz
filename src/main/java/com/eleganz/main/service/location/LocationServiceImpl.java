@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.eleganz.main.mapper.response.ResponseMapper;
+import com.eleganz.main.mapper.response.Mapper;
 import com.eleganz.main.model.domain.user.Location;
 import com.eleganz.main.model.response.user.LocationResponse;
 import com.eleganz.main.repository.location.LocationRepository;
@@ -24,7 +24,7 @@ import com.eleganz.main.repository.location.LocationRepository;
 public class LocationServiceImpl implements LocationService {
 
 	private final LocationRepository locationRepository;
-	private final ResponseMapper<Location, LocationResponse> locationResponseMapper;
+	private final Mapper<Location, LocationResponse> locationResponseMapper;
 
 	/**
 	 * <p>
@@ -34,11 +34,11 @@ public class LocationServiceImpl implements LocationService {
 	 * @param locationRepository
 	 *            a {@link com.eleganz.main.repository.location.LocationRepository} object.
 	 * @param locationResponseMapper
-	 *            a {@link com.eleganz.main.mapper.response.ResponseMapper<Location, LocationResponse>} object.
+	 *            a {@link com.eleganz.main.mapper.response.Mapper<Location, LocationResponse>} object.
 	 */
 	@Autowired
     public LocationServiceImpl(LocationRepository locationRepository,
-    		ResponseMapper<Location, LocationResponse> locationResponseMapper) {
+    		Mapper<Location, LocationResponse> locationResponseMapper) {
         this.locationRepository = locationRepository;
         this.locationResponseMapper = locationResponseMapper;
     }

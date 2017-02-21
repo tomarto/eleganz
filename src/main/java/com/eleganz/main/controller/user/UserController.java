@@ -22,7 +22,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.eleganz.main.exception.ConflictException;
 import com.eleganz.main.exception.NotFoundException;
-import com.eleganz.main.model.request.user.UserRequest;
+import com.eleganz.main.model.domain.user.User;
+import com.eleganz.main.model.request.user.UserCreateRequest;
 import com.eleganz.main.model.request.user.UserUpdateRequest;
 import com.eleganz.main.model.response.Response;
 import com.eleganz.main.model.response.user.UserResponse;
@@ -42,7 +43,6 @@ public class UserController {
 
 	private final UserService userService;
 	private final RequestValidator requestValidator;
-	private final RequestValidator userCreateRequestValidator;
 
 	/**
 	 * <p>
@@ -58,11 +58,9 @@ public class UserController {
 	 */
 	@Autowired
 	public UserController(UserService userService,
-			@Qualifier("requestValidator") RequestValidator requestValidator,
-			@Qualifier("userCreateRequestValidator") RequestValidator userCreateRequestValidator) {
+			@Qualifier("requestValidator") RequestValidator requestValidator) {
 		this.userService = userService;
 		this.requestValidator = requestValidator;
-		this.userCreateRequestValidator = userCreateRequestValidator;
 	}
 
 	/**
@@ -97,25 +95,24 @@ public class UserController {
 
 	/**
 	 * <p>
-	 * Retrieves a single User based on the id.
+	 * Create a new user received from the ui.
 	 * </p>
 	 * 
 	 * @param request
-	 *            a {@link com.eleganz.main.model.request.user.UserRequest} object.
+	 *            a {@link com.eleganz.main.model.request.user.UserCreateRequest} object.
 	 * @return a {@link com.eleganz.main.model.response.Response<String>} object.
 	 */
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping(value = "/user", method = POST, produces = APPLICATION_JSON_VALUE)
-	public @ResponseBody Response<String> createUser(UserRequest request) {
-		userCreateRequestValidator.validate(request);
+	public @ResponseBody Response<String> createUser(@Valid @RequestBody UserCreateRequest request) {
+		requestValidator.validate(request);
 
 		try {
-			userService.create(request);
+			User user = userService.create(request);
+			return new Response<>(String.format("El Usuario %s ha sido creado", user.getUsername()));
 		} catch(DataIntegrityViolationException e) {
-			throw new ConflictException(String.format("El Usuario %s ya existe", request.getUsername()), e);
+			throw new ConflictException("El Usuario ya existe", e);
 		}
-
-		return new Response<>(String.format("El Usuario %s ha sido creado", request.getUsername()));
 	}
 
 	/**

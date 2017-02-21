@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 
-import com.eleganz.main.mapper.response.ResponseMapper;
+import com.eleganz.main.mapper.response.Mapper;
 import com.eleganz.main.model.domain.user.User;
 import com.eleganz.main.model.response.user.EventResponse;
 import com.eleganz.main.model.response.user.LocationResponse;
@@ -22,7 +22,7 @@ import com.eleganz.main.model.response.user.UserResponse;
  * @author Omar Ortiz.
  */
 @Component
-public class UserResponseMapper implements ResponseMapper<User, UserResponse> {
+public class UserResponseMapper implements Mapper<User, UserResponse> {
 
 	/** {@inheritDoc} */
 	@Override

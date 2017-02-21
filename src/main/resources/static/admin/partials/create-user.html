@@ -1,0 +1,140 @@
+<div class="row create-user">
+	<div class="page-header">
+		<h2>Crear Usuario</h2>
+	</div>
+	<div class="col-xs-12 col-md-offset-3 col-md-6 mainbox">
+		<div class="panel panel-body panel-info faded-background">
+			<form id="createUserForm" name="createUserForm" role="form" novalidate="novalidate">
+				<div class="form-group"
+						data-ng-class="{'has-warning': cuvm.fieldHasWarning(createUserForm.email),
+										'has-error': cuvm.fieldHasError(createUserForm.email)}">
+					<label for="email">Email</label>
+					<div class="input-group">
+						<input id="email" type="text" class="form-control" name="email"
+								placeholder="Email" required="required"
+								data-ng-minlength="cuvm.validation.email.minlength"
+								maxlength="{{cuvm.validation.email.maxlength}}"
+								data-ng-maxlength="cuvm.validation.email.maxlength"
+								data-ng-pattern="cuvm.validation.email.regex"
+								data-ng-model="cuvm.newUser.email" />
+						<span class="input-group-addon" data-ng-messages="createUserForm.email.$error"
+								data-ng-show="cuvm.showFieldMessages(createUserForm.email)">
+							<i class="glyphicon glyphicon-remove" data-ng-message="required"
+									data-ng-show="createUserForm.email.$dirty"></i>
+							<i class="glyphicon glyphicon-remove" data-ng-message="pattern"></i>
+							<i class="glyphicon glyphicon-warning-sign" data-ng-message="minlength"></i>
+						</span>
+					</div>
+					<p role="alert" class="help-block" data-ng-messages="createUserForm.email.$error"
+							data-ng-show="cuvm.showFieldMessages(createUserForm.email)">
+						<span class="help-block" data-ng-message="required" 
+								data-ng-show="createUserForm.email.$dirty">
+							Email es requerido
+						</span>
+						<span class="help-block" data-ng-message="pattern">
+							Email debe ser v&#225;lido
+						</span>
+						<span class="help-block" data-ng-message="minlength">
+							Email debe tener un m&iacute;nimo de 
+							<span data-ng-bind="cuvm.validation.email.minlength"></span> caracteres
+						</span>
+						<span class="help-block" data-ng-message="maxlength">
+							Email debe tener un m&#225;ximo de 
+							<span data-ng-bind="cuvm.validation.email.maxlength"></span> caracteres
+						</span>
+					</p>
+				</div>
+				<div class="form-group">
+					<label for="type">Tipo de Usuario</label>
+					<div class="input-group">
+						<select id="userType" class="form-control" name="userType" required="required"
+								data-ng-model="cuvm.newUser.type"
+								data-ng-options="userType.value as userType.name for userType in cuvm.userTypes">
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="type">Tipo de Evento</label>
+					<div class="input-group">
+						<select id="eventType" class="form-control" name="eventType" required="required"
+								data-ng-model="cuvm.newUser.detail.type" data-ng-change="cuvm.changeEventType"
+								data-ng-options="eventType.value as eventType.name for eventType in cuvm.eventTypes">
+						</select>
+					</div>
+				</div>
+				<div data-ng-repeat="person in cuvm.newUser.detail.people">
+					<label>Persona {{$index + 1}}</label>
+					<div class="form-group">
+						<label class="sr-only" for="personFirstName{{$index}}">Nombre Persona {{$index + 1}}</label>
+						<div class="input-group">
+							<input id="personFirstName{{$index}}" type="text" class="form-control"
+									name="personFirstName{{$index}}" placeholder="Nombre" required="required"
+									data-ng-minlength="cuvm.validation.person.minlength"
+									maxlength="{{cuvm.validation.person.maxlength}}"
+									data-ng-maxlength="cuvm.validation.person.maxlength"
+									data-ng-pattern="cuvm.validation.person.regex"
+									data-ng-model="person.firstName" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="sr-only" for="personLastName{{$index}}">Apellido Persona {{$index + 1}}</label>
+						<div class="input-group">
+							<input id="personLastName{{$index}}" type="text" class="form-control"
+									name="personLastName{{$index}}" placeholder="Apellido" required="required"
+									data-ng-minlength="cuvm.validation.person.minlength"
+									maxlength="{{cuvm.validation.person.maxlength}}"
+									data-ng-maxlength="cuvm.validation.person.maxlength"
+									data-ng-pattern="cuvm.validation.person.regex"
+									data-ng-model="person.lastName" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="sr-only" for="personType{{$index}}">Tipo Persona {{$index + 1}}</label>
+						<div class="input-group">
+							<select id="personType{{$index}}" class="form-control" name="personType{{$index}}"
+									required="required" data-ng-model="person.type"
+									data-ng-options="weddingPersonType.value as weddingPersonType.name 
+									for weddingPersonType in cuvm.weddingPersonTypes">
+							</select>
+						</div>
+					</div>
+				</div>
+				<div data-ng-repeat="event in cuvm.newUser.detail.events">
+					<label>Evento {{$index + 1}}</label>
+					<div class="form-group">
+						<label class="sr-only" for="event{{$index}}">Evento {{$index + 1}}</label>
+						<div class="input-group">
+							<select id="event{{$index}}" class="form-control" name="event{{$index}}"
+									required="required" data-ng-model="event.id"
+									data-ng-options="location.id as location.name 
+									for location in cuvm.locations">
+								<option data-ng-repeat="location in cuvm.locations" value="location.id"
+										data-ng-bind-html="location.name">
+								</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="type">Tipo de Evento</label>
+						<div class="input-group">
+							<select id="locationEventType" class="form-control" name="locationEventType"
+									required="required" data-ng-model="event.type"
+									data-ng-options="locationEventType.value as locationEventType.name for 
+											locationEventType in cuvm.locationEventTypes">
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<button id="btn-add-event" type="button" class="btn" data-ng-click="cuvm.addEvent()">
+						Agregar Evento
+					</button>
+				</div>
+				<button id="btn-create" type="button" class="btn btn-primary pull-right"
+						data-ng-disabled="createUserForm.$invalid" data-ng-click="cuvm.createUser()">
+					Crear usuario
+				</button>
+			</form>
+		</div>
+	</div>
+</div>

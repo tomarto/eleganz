@@ -19,6 +19,14 @@
 	margin-left: 0px;
 }
 
+.create-user .form-group .input-group {
+	width: 100%;
+}
+
+.mainbox {
+	color: #333;
+}
+
 /* Desktop-specific */
 @media screen and (min-width: 768px) {
 	

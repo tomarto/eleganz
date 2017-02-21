@@ -16,6 +16,7 @@
 		var userCache = $cacheFactory('user'),
 			factory = {
 				getUsers: getUsers,
+				createUser: createUser,
 				updateUser: updateUser,
 				deleteUser: deleteUser
 			};
@@ -44,6 +45,24 @@
 			}
 
 			function getUsersFailed(error) {
+				pendingRequest.complete(request);
+				return $q.reject(error.data);
+			}
+		}
+
+		function createUser(user) {
+			var request = pendingRequest.register();
+
+			return $http.post('api/user', user)
+				.then(createUserComplete)
+				.catch(createUserFailed);
+
+			function createUserComplete(response) {
+				pendingRequest.complete(request);
+				return response.data.result;
+			}
+
+			function createUserFailed(error) {
 				pendingRequest.complete(request);
 				return $q.reject(error.data);
 			}
