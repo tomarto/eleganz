@@ -3,6 +3,10 @@
 .wrap {
 	background-color: #828282;
 	background-image: url('/user/images/img_bg_3.jpg');
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
 
 .jumbotron {
@@ -46,6 +50,15 @@
     font-size: 12px;
     display: block;
 }
+
+.schedule {
+	color: #333;
+}
+
+.table-striped > tbody > tr:nth-child(odd) > td, 
+.table-striped > tbody > tr:nth-child(odd) > th {
+   background-color: #e5ecf9;
+ }
 
 /* Desktop-specific */
 @media screen and (min-width: 768px) {
