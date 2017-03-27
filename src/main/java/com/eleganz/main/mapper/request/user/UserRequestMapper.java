@@ -64,6 +64,7 @@ public class UserRequestMapper implements Mapper<UserCreateRequest, User> {
 			final Set<Event> events = from.getDetail().getEvents().stream().map(e -> {
 				final Event event = new Event();
 				event.setType(e.getType());
+				event.setDate(e.getDate());
 				final Location location = new Location();
 				location.setId(e.getId());
 				event.setLocation(location);

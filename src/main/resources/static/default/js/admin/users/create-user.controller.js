@@ -70,6 +70,9 @@
 				regex: /^[A-z -]*$/
 			}
 		};
+		vm.dateOptions = {
+			minDate: new Date()
+		};
 
 		vm.showFieldMessages = formValidation.showFieldMessages;
 		vm.fieldHasWarning = formValidation.fieldHasWarning;

@@ -3,6 +3,8 @@ package com.eleganz.main.controller.email;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.eleganz.main.model.request.email.EmailInviteRequest;
 import com.eleganz.main.model.request.email.EmailRequest;
 import com.eleganz.main.model.response.Response;
 import com.eleganz.main.service.email.EmailService;
@@ -61,5 +64,23 @@ public class EmailController {
 		emailService.send(request);
 
 		return new Response<>("Email enviado.");
+	}
+
+	/**
+	 * <p>
+	 * Send an email for invites.
+	 * </p>
+	 * 
+	 * @param request
+	 *            a {@link java.util.List<EmailInviteRequest>} object.
+	 * @return a {@link com.eleganz.main.model.response.Response<String>} object.
+	 */
+	@PreAuthorize("hasRole('ROLE_USER')")
+	@RequestMapping(value = "/email/invite", method = POST, produces = APPLICATION_JSON_VALUE)
+	public @ResponseBody Response<String> sendInvites(@RequestBody List<EmailInviteRequest> request) {
+		requestValidator.validate(request);
+		emailService.sendInvites(request);
+
+		return new Response<>("Invitaciones enviadas por correo.");
 	}
 }

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<meta name="theme-color" content="#B39F3C" />
+		<title>Eleganz User</title>
+		<link rel="shortcut icon" type="image/x-icon" th:href="@{/favicon.ico}" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sacramento" />
+		<link rel="stylesheet" type="text/css" th:href="@{/default/css/vendor/bootstrap/bootstrap.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/default/css/vendor/font-awesome/font-awesome.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/default/css/vendor/toaster/toaster.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/default/css/common/common.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/default/css/user/user.css}" />
+	</head>
+	<body data-ng-app="user">
+		<div data-spinner="spinner"></div>
+
+		<div data-toaster-container="toaster-container"
+				data-toaster-options="{'position-class': 'toast-center-wide'}"></div>
+
+		<div class="wrap">
+			<div data-ui-view="header"></div>
+			<div data-ui-view="content" class="container"></div>
+		</div>
+
+		<div class="footer">
+			<div class="container">
+				<p>&copy; Eleganz. Current env: <span th:text="${env}">Environment</span></p>
+			</div>
+		</div>
+
+		<script type="text/javascript" th:src="@{/default/js/vendor/jquery/jquery-3.1.1.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/vendor/angular/angular.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/vendor/angular/angular-ui-router.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/vendor/angular/angular-messages.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/vendor/angular/angular-animate.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/vendor/angular/angular-touch.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/vendor/angular/angular-sanitize.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/vendor/underscore/underscore.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/vendor/bootstrap/bootstrap.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/vendor/bootstrap/ui-bootstrap-tpls-2.3.1.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/vendor/toaster/toaster.js}"></script>
+        <script type="text/javascript" th:src="@{/default/js/vendor/timer/angular-timer.min.js}"></script>
+        <script type="text/javascript" th:src="@{/default/js/vendor/timer/moment.js}"></script>
+        <script type="text/javascript" th:src="@{/default/js/vendor/timer/humanize-duration.js}"></script>
+
+		<script type="text/javascript" th:src="@{/default/js/common/core/core.module.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/common/core/authentication.service.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/common/core/form-validation.service.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/common/core/notifier.service.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/common/core/pending-request.service.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/common/core/toaster.service.js}"></script>
+		<script type="text/javascript" th:src="@{/default/js/common/core/spinner.directive.js}"></script>
+
+		<script type="text/javascript" th:src="@{/default/js/user/user.js}"></script>
+        <script type="text/javascript" th:src="@{/default/js/user/user.routes.js}"></script>
+
+        <script type="text/javascript" th:src="@{/default/js/user/header/header.module.js}"></script>
+        <script type="text/javascript" th:src="@{/default/js/user/header/header.controller.js}"></script>
+
+        <script type="text/javascript" th:src="@{/default/js/user/home/home.module.js}"></script>
+        <script type="text/javascript" th:src="@{/default/js/user/home/home.controller.js}"></script>
+        <script type="text/javascript" th:src="@{/default/js/user/home/invite.service.js}"></script>
+	</body>
+</html>

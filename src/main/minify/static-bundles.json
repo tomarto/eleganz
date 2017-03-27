@@ -31,6 +31,13 @@
 			]
 		},
 		{
+			"type": "css",
+			"name": "user.css",
+			"files": [
+				"user/user.css"
+			]
+		},
+		{
 			"type": "js",
 			"name": "vendor.js",
 			"files": [
@@ -44,7 +51,10 @@
 				"vendor/underscore/underscore.js",
 				"vendor/bootstrap/bootstrap.js",
 				"vendor/bootstrap/ui-bootstrap-tpls-2.3.1.js",
-				"vendor/toaster/toaster.js"
+				"vendor/toaster/toaster.js",
+				"vendor/timer/angular-timer.min.js",
+				"vendor/timer/moment.js",
+				"vendor/timer/humanize-duration.js"
 			]
 		},
 		{
@@ -98,6 +108,21 @@
 				"admin/users/edit-user.controller.js",
 				"admin/users/delete-user.controller.js",
 				"admin/users/create-user.controller.js"
+			]
+		},
+		{
+			"type": "js",
+			"name": "user.js",
+			"files": [
+				"user/user.js",
+				"user/user.routes.js",
+
+				"user/header/header.module.js",
+				"user/header/header.controller.js",
+
+				"user/home/home.module.js",
+				"user/home/home.controller.js",
+				"user/home/invite.service.js"
 			]
 		}
 	]

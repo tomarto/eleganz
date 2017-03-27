@@ -1,0 +1,81 @@
+<div class="row">
+	<div class="col-md-8 col-md-offset-2 text-center">
+		<div class="jumbotron">
+			<h1 data-ng-bind="hvm.title"></h1>
+            <h2>Nos Casamos</h2>
+		</div>
+        <div class="countdown" data-timer data-interval="1000" data-end-time="hvm.time" data-language="es">
+            <div class="simply-section simply-days">
+                <div>
+                    <div class="simply-amount">{{days}}</div>
+                    <div class="simply-word">D&#237;as</div>
+                </div>
+            </div>
+            <div class="simply-section simply-hours">
+                <div>
+                    <div class="simply-amount">{{hours}}</div>
+                    <div class="simply-word">Hora{{hoursS}}</div>
+                </div>
+            </div>
+            <div class="simply-section simply-days">
+                <div>
+                    <div class="simply-amount">{{minutes}}</div>
+                    <div class="simply-word">Minuto{{minutesS}}</div>
+                </div>
+            </div>
+            <div class="simply-section simply-days">
+                <div>
+                    <div class="simply-amount">{{seconds}}</div>
+                    <div class="simply-word">Segundo{{secondsS}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="invite">
+            <h2>Invitar gente:</h2>
+            <p>Escribe el nombre y correo de las personas que quieras invitar:</p>
+            <div class="col-xs-12 col-md-offset-3 col-md-6 mainbox">
+                <div class="panel panel-body panel-info faded-background">
+                    <form id="inviteForm" name="inviteForm" role="form" novalidate="novalidate">
+                        <div data-ng-repeat="invite in hvm.invites">
+                            <label style="color: #333;">Invitados</label>
+                            <div class="form-group">
+                                <label class="sr-only" for="personName{{$index}}">Nombre {{$index + 1}}</label>
+                                <div class="input-group">
+                                    <input id="personName{{$index}}" type="text" class="form-control"
+                                            name="personName{{$index}}" placeholder="Nombre" required="required"
+                                            data-ng-minlength="hvm.validation.person.minlength"
+                                            maxlength="{{hvm.validation.person.maxlength}}"
+                                            data-ng-maxlength="hvm.validation.person.maxlength"
+                                            data-ng-pattern="hvm.validation.person.regex"
+                                            data-ng-model="invite.name" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="personEmail{{$index}}">Email {{$index + 1}}</label>
+                                <div class="input-group">
+                                    <input id="personEmail{{$index}}" type="text" class="form-control"
+                                            name="personEmail{{$index}}" placeholder="Email" required="required"
+                                            data-ng-minlength="hvm.validation.email.minlength"
+                                            maxlength="{{hvm.validation.email.maxlength}}"
+                                            data-ng-maxlength="hvm.validation.email.maxlength"
+                                            data-ng-pattern="hvm.validation.email.regex"
+                                            data-ng-model="invite.email" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button id="btn-add-invite" type="button" class="btn btn-default"
+                                    data-ng-click="hvm.addInvite()">
+                                Agregar Invitado
+                            </button>
+                        </div>
+                        <button id="btn-create" type="button" class="btn btn-primary pull-right"
+                                data-ng-disabled="inviteForm.$invalid" data-ng-click="hvm.sendInvites(inviteForm.$valid)">
+                            Env&#237;ar invitaciones
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+	</div>
+</div>

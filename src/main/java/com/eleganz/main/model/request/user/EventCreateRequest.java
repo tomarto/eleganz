@@ -54,7 +54,7 @@ public class EventCreateRequest extends EventBase implements Serializable {
 	 * 
 	 * @return the date
 	 */
-//	@NotNull
+	@NotNull
 	public Date getDate() {
 		return super.getDate();
 	}

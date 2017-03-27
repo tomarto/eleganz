@@ -33,6 +33,9 @@ public class IndexController {
 	@Value("${app.adminPage}")
 	private String adminPage;
 
+	@Value("${app.userPage}")
+	private String userPage;
+
     private AuthenticationFacade authenticationFacade;
 
 	/**
@@ -78,8 +81,7 @@ public class IndexController {
         if(roles.contains("ROLE_ADMIN")) {
         	mav = new ModelAndView(adminPage);
         } else {
-        	// TODO: Change to User page
-        	mav = new ModelAndView(adminPage);
+        	mav = new ModelAndView(userPage);
         }
         mav.addObject("env", env);
 

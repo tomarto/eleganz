@@ -120,10 +120,12 @@
 						<exclude>static/prod/css/common.css</exclude>
 						<exclude>static/prod/css/welcome.css</exclude>
 						<exclude>static/prod/css/admin.css</exclude>
+						<exclude>static/prod/css/user.css</exclude>
 						<exclude>static/prod/js/vendor.js</exclude>
 						<exclude>static/prod/js/common.js</exclude>
 						<exclude>static/prod/js/welcome.js</exclude>
 						<exclude>static/prod/js/admin.js</exclude>
+						<exclude>static/prod/js/user.js</exclude>
 					</excludes>
 				</configuration>
 			</plugin>
@@ -137,8 +139,9 @@
 <!-- 					<packagingExcludes> -->
 <!-- 						WEB-INF/classes/static/prod/js/vendor.js, WEB-INF/classes/static/prod/css/vendor.css, -->
 <!-- 						WEB-INF/classes/static/prod/js/common.js, WEB-INF/classes/static/prod/css/common.css, -->
-<!-- 						WEB-INF/classes/static/prod/js/welcome.js, WEB-INF/classes/static/prod/css/welcome.css -->
-<!-- 						WEB-INF/classes/static/prod/js/admin.js, WEB-INF/classes/static/prod/css/admin.css -->
+<!-- 						WEB-INF/classes/static/prod/js/welcome.js, WEB-INF/classes/static/prod/css/welcome.css, -->
+<!-- 						WEB-INF/classes/static/prod/js/admin.js, WEB-INF/classes/static/prod/css/admin.css, -->
+<!-- 						WEB-INF/classes/static/prod/js/user.js, WEB-INF/classes/static/prod/css/user.css -->
 <!-- 					</packagingExcludes> -->
 <!-- 				</configuration> -->
 <!-- 			</plugin> -->

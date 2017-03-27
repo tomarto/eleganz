@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -102,7 +103,7 @@ public class UserDetail extends UserDetailBase {
 	 * 
 	 * @return the people
 	 */
-	@OneToMany(mappedBy = "userDetail", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "userDetail", cascade = CascadeType.ALL)
 	public Set<Person> getPeople() {
 		return people;
 	}
@@ -126,7 +127,7 @@ public class UserDetail extends UserDetailBase {
 	 * 
 	 * @return the events
 	 */
-	@OneToMany(mappedBy = "userDetail", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "userDetail", cascade = CascadeType.ALL)
 	public Set<Event> getEvents() {
 		return events;
 	}

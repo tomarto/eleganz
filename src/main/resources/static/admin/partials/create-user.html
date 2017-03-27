@@ -99,7 +99,7 @@
 						</div>
 					</div>
 				</div>
-				<div data-ng-repeat="event in cuvm.newUser.detail.events">
+				<div data-ng-repeat="event in cuvm.newUser.detail.events" data-ng-init="isOpened = []">
 					<label>Evento {{$index + 1}}</label>
 					<div class="form-group">
 						<label class="sr-only" for="event{{$index}}">Evento {{$index + 1}}</label>
@@ -124,6 +124,20 @@
 							</select>
 						</div>
 					</div>
+                    <div class="form-group">
+                        <label for="date">Fecha</label>
+                        <div class="input-group" data-ng-init="isOpened[$index] = false">
+                            <input type="text" class="form-control" data-uib-datepicker-popup="dd/MM/yyyy"
+                                    data-ng-model="event.date" data-is-open="isOpened[$index]"
+                                    data-datepicker-options="cuvm.dateOptions" required="required"
+                                    data-close-text="Cerrar" />
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" data-ng-click="isOpened[$index] = !isOpened[$index]">
+                                    <i class="glyphicon glyphicon-calendar"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
 				</div>
 				<div class="form-group">
 					<button id="btn-add-event" type="button" class="btn" data-ng-click="cuvm.addEvent()">

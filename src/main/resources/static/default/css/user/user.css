@@ -1,0 +1,70 @@
+@CHARSET "ISO-8859-1";
+
+.wrap {
+	background-color: #828282;
+	background-image: url('/user/images/img_bg_3.jpg');
+}
+
+.jumbotron {
+	background-color: transparent;
+}
+
+.jumbotron > h1 {
+    font-family: "Sacramento", Arial, serif;
+}
+
+.countdown .simply-section {
+	display: inline-block;
+    width: 100px;
+    height: 100px;
+    background: rgba(241, 78, 149, 0.8);
+    margin: 0 4px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+    position: relative;
+    animation: pulse 1s ease infinite;
+}
+
+.countdown .simply-section > div {
+	display: table-cell;
+    vertical-align: middle;
+    height: 100px;
+    width: 100px;
+}
+
+.countdown .simply-section .simply-amount {
+	font-size: 30px;
+	display: block;
+    color: white;
+}
+
+.countdown .simply-section .simply-word {
+	color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    font-size: 12px;
+    display: block;
+}
+
+/* Desktop-specific */
+@media screen and (min-width: 768px) {
+	.jumbotron > h1 {
+	    font-size: 100px;
+	}
+
+	.jumbotron > h2 {
+	    font-size: 20px;
+	}
+}
+
+/* Mobile-specific */
+@media screen and (max-width: 767px) {
+	.jumbotron > h1 {
+	    font-size: 30px;
+	}
+
+	.jumbotron > h2 {
+	    font-size: 16px;
+	}
+}
