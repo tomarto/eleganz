@@ -10,9 +10,9 @@
 		.module('home')
 		.controller('HomeController', HomeController);
 
-	HomeController.$inject = ['currentUser', 'inviteService'];
+	HomeController.$inject = ['currentUser', 'inviteService', 'toasterService'];
 
-	function HomeController(currentUser, inviteService) {
+	function HomeController(currentUser, inviteService, toasterService) {
 		var vm = this;
 
 		vm.invites = [{}];
